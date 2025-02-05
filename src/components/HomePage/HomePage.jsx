@@ -6,7 +6,6 @@ import 'slick-carousel/slick/slick';
 import EstimateForm from '../EstimateForm/EstimateForm';
 import './HomePage.css';
 
-
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
 
@@ -95,65 +94,31 @@ const HomePage = () => {
     <div className="split-slideshow">
       <div className="slideshow">
         <div className="slider">
-          <div className="item">
-            <img src="/images/kitchen-home.jpg" alt="Kitchen Home" />
-            <button className="estimation-button" onClick={handleOpenModal}>
-              Free Estimate
-            </button>
-          </div>
-          <div className="item">
-            <img src="/images/livingroom.jpg" alt="Living Room" />
-            <button className="estimation-button" onClick={handleOpenModal}>
-              Free Estimate
-            </button>
-          </div>
-          <div className="item">
-            <img src="/images/livingroom2.jpg" alt="Living Room 2" />
-            <button className="estimation-button" onClick={handleOpenModal}>
-              Free Estimate
-            </button>
-          </div>
-          <div className="item">
-            <img src="/images/basement1.jpg" alt="Basement 1" />
-            <button className="estimation-button" onClick={handleOpenModal}></button>
-          </div>
-          <div className="item">
-            <img src="/images/basement2.jpg" alt="Basement 2" />
-            <button className="estimation-button" onClick={handleOpenModal}></button>
-          </div>
-          <div className="item">
-            <img src="/images/hallway.jpg" alt="Hallway" />
-            <button className="estimation-button" onClick={handleOpenModal}></button>
-          </div>
-          <div className="item">
-            <img src="/images/bathroom1.jpg" alt="Bathroom 1" />
-            <button className="estimation-button" onClick={handleOpenModal}></button>
-          </div>
-          <div className="item">
-            <img src="/images/bathroom2.jpg" alt="Bathroom 2" />
-            <button className="estimation-button" onClick={handleOpenModal}></button>
-          </div>
-          <div className="item">
-            <img src="/images/deck1.jpg" alt="Deck 1" />
-            <button className="estimation-button" onClick={handleOpenModal}></button>
-          </div>
-          <div className="item">
-            <img src="/images/kitchen-home.jpg" alt="Kitchen Home" />
-            <button className="estimation-button" onClick={handleOpenModal}></button>
-          </div>
+          {[
+            "/images/kitchen-home.jpg",
+            "/images/livingroom.jpg",
+            "/images/livingroom2.jpg",
+            "/images/basement1.jpg",
+            "/images/basement2.jpg",
+            "/images/hallway.jpg",
+            "/images/bathroom1.jpg",
+            "/images/bathroom2.jpg",
+            "/images/deck1.jpg",
+            "/images/kitchen-home.jpg",
+          ].map((src, index) => (
+            <div className="item" key={index}>
+              <img src={src} alt={`Slide ${index + 1}`} />
+              <button className="estimation-button" onClick={handleOpenModal}>
+                Free Estimate
+              </button>
+            </div>
+          ))}
         </div>
       </div>
       <div className="slideshow-text">
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
-        <div className="item"></div>
+        {[...Array(10)].map((_, index) => (
+          <div className="item" key={index}></div>
+        ))}
       </div>
       <EstimateForm show={showModal} handleClose={handleCloseModal} />
     </div>
