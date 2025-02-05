@@ -1,0 +1,46 @@
+body{
+  /* background-image: url('/public/images/kitchen-home.jpg'); */
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+  height: 100vh;
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+
+/* === =====*/
+
+@font-face { 
+  font-family: 'Ubuntu Condensed';
+  src: url('../public/UbuntuCondensed-Regular.ttf') format('truetype');
+}
+
+/*======== Log in inside page ================*/
+.Inside-Login-Page{
+  min-height: 450px;
+  margin-top: 150px;
+  text-align: center;
+}
+
+
+.logoutsucc{
+  margin: 10%;
+  background-color: #33a1ff;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 10%;
+}
+
+.deletesucc {
+  margin: 10%;
+  background-color: #33a1ff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 10%;
+}
