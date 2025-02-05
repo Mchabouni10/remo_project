@@ -30,7 +30,7 @@
 }
 
 #nav ul li {
-  margin-left: 20px; /* Adjust this value to control the space between links */
+  margin-left: 20px;
 }
 
 #nav ul li a {
@@ -57,6 +57,51 @@
 .CompanyLogo {
   height: 70px;
   width: auto;
+}
+
+/* Hamburger Icon (Hidden by Default) */
+.hamburger-icon {
+  display: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .hamburger-icon {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .links-container {
+    position: absolute;
+    top: 100%; /* Position below the navbar */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .links-container.active {
+    max-height: 500px; /* Adjust based on your content */
+  }
+
+  #nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #nav ul li {
+    margin: 10px 0; /* Adjust spacing for mobile */
+  }
+
+  #nav ul li a {
+    font-size: 20px; /* Adjust font size for mobile */
+  }
 }
 
 

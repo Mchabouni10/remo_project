@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
     <nav id="nav">
       <div className="logo-container">
@@ -14,25 +20,42 @@ const Navbar = () => {
           alt="Company Logo"
         />
       </div>
-      <div className="links-container">
+
+      {/* Hamburger Icon for Mobile */}
+      <div className="hamburger-icon" onClick={toggleMobileMenu}>
+        <FontAwesomeIcon icon={isMobileMenuOpen ? faTimes : faBars} />
+      </div>
+
+      {/* Regular Links (Hidden on Mobile) */}
+      <div className={`links-container ${isMobileMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
-            <Link to="/">HOME</Link>
+            <Link to="/" onClick={toggleMobileMenu}>
+              HOME
+            </Link>
           </li>
           <li>
-            <Link to="/Services">Services</Link>
+            <Link to="/Services" onClick={toggleMobileMenu}>
+              Services
+            </Link>
           </li>
           <li>
-            <Link to="/Portfolio">Portfolio</Link>
+            <Link to="/Portfolio" onClick={toggleMobileMenu}>
+              Portfolio
+            </Link>
           </li>
           <li>
-            <Link to="/About">About</Link>
+            <Link to="/About" onClick={toggleMobileMenu}>
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/Contact">Contact</Link>
+            <Link to="/Contact" onClick={toggleMobileMenu}>
+              Contact
+            </Link>
           </li>
           <li>
-            <a className="UserIcon" href="/login">
+            <a className="UserIcon" href="/login" onClick={toggleMobileMenu}>
               <FontAwesomeIcon icon={faUser} />
             </a>
           </li>
