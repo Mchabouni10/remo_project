@@ -1,0 +1,101 @@
+/* Services.css */
+
+/* Container for each service section */
+.service-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2% auto;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Content container */
+.service-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Text container */
+.service-text {
+    width: 50%;
+    padding-right: 20px;
+}
+
+/* Image container */
+.service-image {
+    width: 50%;
+    padding-left: 20px;
+}
+
+/* Divider line between text and image */
+.divider {
+    width: 1px;
+    background-color: #ccc;
+    height: 100%;
+    margin: 0 20px;
+}
+
+/* Heading styles specific to service sections */
+.service-section h3 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Paragraph styles specific to service sections */
+.service-section p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Image styles */
+.service-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Main heading style */
+.services-main-heading {
+    text-align: center;
+    font-size: 36px;
+    color: #222;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .service-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .service-content {
+        flex-direction: column;
+    }
+
+    .service-text,
+    .service-image {
+        width: 100%;
+        padding: 0;
+    }
+
+    .service-image {
+        margin-top: 20px;
+    }
+
+    .divider {
+        display: none;
+    }
+}
+  
+   
+    
+  
