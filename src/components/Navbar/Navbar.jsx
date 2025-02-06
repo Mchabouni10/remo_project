@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Import useLocation
 import "./Navbar.css";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation(); // Get the current page path
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -30,34 +31,51 @@ const Navbar = () => {
       <div className={`links-container ${isMobileMenuOpen ? "active" : ""}`}>
         <ul>
           <li>
-            <Link to="/" onClick={toggleMobileMenu}>
+            <Link
+              to="/"
+              onClick={toggleMobileMenu}
+              className={location.pathname === "/" ? "active" : ""}
+            >
               HOME
             </Link>
           </li>
           <li>
-            <Link to="/Services" onClick={toggleMobileMenu}>
+            <Link
+              to="/Services"
+              onClick={toggleMobileMenu}
+              className={location.pathname === "/Services" ? "active" : ""}
+            >
               Services
             </Link>
           </li>
           <li>
-            <Link to="/Portfolio" onClick={toggleMobileMenu}>
+            <Link
+              to="/Portfolio"
+              onClick={toggleMobileMenu}
+              className={location.pathname === "/Portfolio" ? "active" : ""}
+            >
               Portfolio
             </Link>
           </li>
           <li>
-            <Link to="/About" onClick={toggleMobileMenu}>
+            <Link
+              to="/About"
+              onClick={toggleMobileMenu}
+              className={location.pathname === "/About" ? "active" : ""}
+            >
               About
             </Link>
           </li>
           <li>
-            <Link to="/Contact" onClick={toggleMobileMenu}>
+            <Link
+              to="/Contact"
+              onClick={toggleMobileMenu}
+              className={`contact-button ${
+                location.pathname === "/Contact" ? "active" : ""
+              }`}
+            >
               Contact
             </Link>
-          </li>
-          <li>
-            <a className="UserIcon" href="/login" onClick={toggleMobileMenu}>
-              <FontAwesomeIcon icon={faUser} />
-            </a>
           </li>
         </ul>
       </div>

@@ -59,6 +59,79 @@
   width: auto;
 }
 
+/* Hamburger Icon (Hidden by Default) */
+.hamburger-icon {
+  display: none;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+/* Style for Active Page */
+.links-container ul li a.active {
+  font-weight: bold; /* Make it stand out */
+  color: black; /* Change the text color */
+  transition: 0.3s ease-in-out;
+}
+
+.UserIcon.active {
+  color: black;
+}
+
+/* Contact Button Style */
+#nav ul li .contact-button {
+  background-color: black; /* Black background */
+  color: white !important; /* White text */
+  padding: 1px 5px; /* Button padding */
+  border-radius: 4px; /* Rounded corners */
+  transition: 0.3s ease-in-out;
+}
+
+/* Hover effect - Reverse colors */
+#nav ul li .contact-button:hover {
+  background-color: white;
+  color: black !important;
+}
+
+
+/* Mobile Menu Styles */
+@media (max-width: 768px) {
+  .hamburger-icon {
+    display: block; /* Show hamburger icon on mobile */
+  }
+
+  .links-container {
+    position: absolute;
+    top: 100%; /* Position below the navbar */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+  .links-container.active {
+    max-height: 500px; /* Adjust based on your content */
+  }
+
+  #nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #nav ul li {
+    margin: 10px 0; /* Adjust spacing for mobile */
+  }
+
+  #nav ul li a {
+    font-size: 20px; /* Adjust font size for mobile */
+  }
+}
+
   
 
   

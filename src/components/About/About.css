@@ -1,0 +1,94 @@
+/* Main heading style */
+.about-main-heading {
+    text-align: center;
+    font-size: 36px;
+    color: #222;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+/* Container for each about section */
+.about-section {
+    display: flex;
+    align-items: stretch; /* Stretch children to match height */
+    justify-content: space-between;
+    margin: 2% auto;
+    width: 80%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Content container */
+.about-content {
+    display: flex;
+    align-items: stretch; /* Stretch children to match height */
+    width: 100%;
+}
+
+/* Text container */
+.about-text {
+    width: 50%;
+    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center text vertically */
+}
+
+/* Image container */
+.about-image {
+    width: 50%;
+    padding-left: 20px;
+    display: flex;
+    align-items: center; /* Center image vertically */
+}
+
+/* Ensure images fill their container and maintain aspect ratio */
+.about-image img {
+    width: 100%;
+    height: auto;
+    max-height: 300px; /* Limit image height for consistency */
+    object-fit: cover; /* Ensure images cover the space nicely */
+    border-radius: 8px;
+}
+
+/* Paragraph styles */
+.about-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin: 10px 40px;
+}
+
+/* Reverse content layout for alternating sections */
+.about-content.reverse {
+    flex-direction: row-reverse;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-section {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-text,
+    .about-image {
+        width: 100%;
+        padding: 0;
+    }
+
+    .about-image {
+        margin-top: 20px;
+    }
+
+    /* Adjust image height for mobile */
+    .about-image img {
+        max-height: 200px;
+    }
+}
