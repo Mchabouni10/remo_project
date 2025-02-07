@@ -1,19 +1,41 @@
-// EstimateForm.js
 import React from 'react';
+import emailjs from '@emailjs/browser';
 import './EstimateForm.css';
 
 const EstimateForm = ({ show, handleClose }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Process form data here
-    handleClose();
+
+    const formData = {
+      name: event.target.name.value,
+      address: event.target.address.value,
+      email: event.target.email.value,
+      phone: event.target.phone.value,
+      message: event.target.message.value,
+    };
+
+    emailjs.send(
+      'service_dd3vt4c', // Replace with your EmailJS Service ID
+      'template_bh1msvk', // Replace with your EmailJS Template ID
+      formData,
+      '1XG9dukbZkFhvw7JT' // Replace with your EmailJS Public Key
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      alert('Estimate request sent successfully!');
+      handleClose();
+    })
+    .catch((error) => {
+      console.error('FAILED...', error);
+      alert('Failed to send message.');
+    });
   };
 
   return (
     <div className={`modal ${show ? 'display-block' : 'display-none'}`}>
       <div className="modal-content">
         <span className="close-button" onClick={handleClose}>&times;</span>
-        <h2 className="estimate-heading">Free Estimate request</h2>
+        <h2 className="estimate-heading">Free Estimate Request</h2>
         <form onSubmit={handleSubmit}>
           <label>
             Name:
@@ -32,8 +54,8 @@ const EstimateForm = ({ show, handleClose }) => {
             <input type="tel" name="phone" required />
           </label>
           <label>
-           Message:
-          <textarea name="message" required minLength="300" placeholder="Please write at least 300 characters"></textarea>
+            Message:
+            <textarea name="message" required placeholder="Enter your message"></textarea>
           </label>
           <button type="submit">Submit</button>
         </form>
@@ -43,4 +65,6 @@ const EstimateForm = ({ show, handleClose }) => {
 };
 
 export default EstimateForm;
+
+
 

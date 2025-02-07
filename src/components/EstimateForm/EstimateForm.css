@@ -14,11 +14,14 @@
   
   .modal-content {
     background-color: #fff;
-    padding: 3%;
+    padding: 2%;
     border-radius: 5px;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px; /* Reduce width slightly */
+    max-height: 80vh; /* Reduce height */
+    overflow-y: auto; /* Enable scrolling if needed */
   }
+  
   
   .close-button {
     float: right;
@@ -37,14 +40,17 @@
    
   }
   
-  input, textarea {
+  textarea {
     width: 100%;
+    height: 80px; /* Reduced height */
     padding: 8px;
     margin-top: 5px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    resize: vertical; /* Allows users to expand if needed */
   }
+  
   
   button {
     background-color: black;
