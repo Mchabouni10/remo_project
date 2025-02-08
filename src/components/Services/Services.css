@@ -107,6 +107,26 @@
     }
 }
   
-   
-    
+.service-summary ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Centers items horizontally */
+    gap: 20px; /* Adds spacing between items */
+  }
+  
+  .service-summary li {
+    cursor: pointer;
+    padding: 10px 15px;
+    background-color: #555;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .service-summary li:hover {
+    background-color: black;
+  }
+  
+ 
   

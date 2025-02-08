@@ -1,11 +1,33 @@
-import React from "react";
+
+import React, { useRef } from "react";
 import "./Services.css"; // Import the CSS file
 
 function Services() {
+  const kitchenRef = useRef(null);
+  const bathroomRef = useRef(null);
+  const basementRef = useRef(null);
+  const otherRef = useRef(null);
+
+  const scrollToSection = (ref) => {
+    const offset = 120; // Adjust this value to leave space for the title
+    const elementPosition = ref.current.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
+  };
+  
+
   return (
     <>
-      <h1 className="services-main-heading">Services</h1>
-      <div className="service-section">
+      <h1 className="services-main-heading">Our Services</h1>
+      <div className="service-summary">
+        <ul>
+          <li onClick={() => scrollToSection(kitchenRef)}>Kitchen Remodeling</li>
+          <li onClick={() => scrollToSection(bathroomRef)}>Bathroom Remodeling</li>
+          <li onClick={() => scrollToSection(basementRef)}>Basement Remodeling</li>
+          <li onClick={() => scrollToSection(otherRef)}>Other Services</li>
+        </ul>
+      </div>
+
+      <div className="service-section" ref={kitchenRef}>
         <div className="service-content">
           <div className="service-text">
             <h3 className="service-heading">Kitchen Remodeling</h3>
@@ -36,7 +58,7 @@ function Services() {
           </div>
         </div>
       </div>
-      <div className="service-section">
+      <div className="service-section" ref={bathroomRef}>
         <div className="service-content reverse">
           <div className="service-text">
             <h3 className="service-heading">Bathroom Remodeling</h3>
@@ -61,7 +83,7 @@ function Services() {
           </div>
         </div>
       </div>
-      <div className="service-section">
+      <div className="service-section" ref={basementRef}>
         <div className="service-content">
           <div className="service-text">
             <h3 className="service-heading">Basement Remodeling</h3>
@@ -90,7 +112,7 @@ function Services() {
           </div>
         </div>
       </div>
-      <div className="service-section">
+      <div className="service-section" ref={otherRef}>
         <div className="service-content reverse">
           <div className="service-text">
             <h3 className="service-heading">Other Services</h3>

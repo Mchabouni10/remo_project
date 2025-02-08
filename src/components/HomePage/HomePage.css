@@ -1,24 +1,24 @@
 .split-slideshow {
-  position: relative;
-  height: 70vh; /* Adjusted height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 74vh; /* Adjusted height */
   width: 80%; /* Adjusted width */
-  margin: 3% auto; /* Centered with margin */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  margin: auto; 
   overflow: hidden;
+  position: relative;
+  margin-top: 2%;
 }
 
 .slideshow {
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
   width: 100%;
   height: 100%;
+  position: relative;
   z-index: 1;
-}
-
-.slider {
-  width: 100%;
-  height: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .item {
@@ -31,16 +31,16 @@
 .item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensure images cover the area */
+  object-fit: cover; /* Ensures images scale properly */
 }
 
+/* Dots Navigation */
 .slick-dots {
   position: absolute;
   z-index: 100;
   width: 7%;
-  height: auto;
-  bottom: 25%; /* Adjusted position */
-  right: 1%; /* Adjusted position */
+  bottom: 30%; /* Adjusted for better placement */
+  right: 2%;
   color: #fff;
   display: block;
 }
@@ -48,13 +48,13 @@
 .slick-dots li {
   display: block;
   width: 100%;
-  height: auto;
+  height: 5px;
 }
 
 .slick-dots li button {
   position: relative;
-  width: 50px;
-  height: 15px;
+  width: 60px;
+  height: 20px;
   text-align: center;
 }
 
@@ -62,8 +62,8 @@
   content: '';
   background: white;
   color: white;
-  height: 3px;
-  width: 30px;
+  height: 4px;
+  width: 40px;
   border-radius: 3px;
   position: absolute;
   top: 50%;
@@ -75,14 +75,15 @@
 }
 
 .slick-dots li.slick-active button:before {
-  width: 50px;
+  width: 70px;
   background-color: black;
   opacity: 3;
 }
 
+/* Estimation Button */
 .estimation-button {
   position: absolute;
-  top: 80%; /* Adjusted position */
+  bottom: 10%; /* More responsive positioning */
   left: 50%;
   transform: translateX(-50%);
   background-color: black;
@@ -99,4 +100,68 @@
 
 .estimation-button:hover {
   background-color: #333;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .split-slideshow {
+    width: 90%;
+    height: 65vh;
+  }
+
+  .item {
+    height: 60vh;
+  }
+
+  .slick-dots {
+    bottom: 5%;
+    width: 10%;
+  }
+
+  .estimation-button {
+    padding: 12px 50px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .split-slideshow {
+    width: 95%;
+    height: 55vh;
+  }
+
+  .item {
+    height: 50vh;
+  }
+
+  .slick-dots {
+    bottom: 3%;
+    width: 12%;
+  }
+
+  .estimation-button {
+    padding: 10px 40px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .split-slideshow {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .item {
+    height: 40vh;
+  }
+
+  .slick-dots {
+    width: 15%;
+    bottom: 15%;
+  }
+
+  .estimation-button {
+    padding: 8px 30px;
+    font-size: 14px;
+  }
 }

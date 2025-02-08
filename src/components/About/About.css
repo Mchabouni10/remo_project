@@ -5,90 +5,138 @@
     color: #222;
     margin-top: 20px;
     margin-bottom: 40px;
-}
-
-/* Container for each about section */
-.about-section {
+  }
+  
+  /* Container for each about section */
+  .about-section {
     display: flex;
     align-items: stretch; /* Stretch children to match height */
     justify-content: space-between;
     margin: 2% auto;
-    width: 80%;
+    width: 90%; /* Adjusted width for better responsiveness */
+    max-width: 1200px; /* Limit maximum width for larger screens */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
-}
-
-/* Content container */
-.about-content {
+  }
+  
+  /* Content container */
+  .about-content {
     display: flex;
     align-items: stretch; /* Stretch children to match height */
     width: 100%;
-}
-
-/* Text container */
-.about-text {
+  }
+  
+  /* Text container */
+  .about-text {
     width: 50%;
     padding-right: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center text vertically */
-}
-
-/* Image container */
-.about-image {
+  }
+  
+  /* Image container */
+  .about-image {
     width: 50%;
     padding-left: 20px;
     display: flex;
     align-items: center; /* Center image vertically */
-}
-
-/* Ensure images fill their container and maintain aspect ratio */
-.about-image img {
+  }
+  
+  /* Ensure images fill their container and maintain aspect ratio */
+  .about-image img {
     width: 100%;
     height: auto;
     max-height: 300px; /* Limit image height for consistency */
     object-fit: cover; /* Ensure images cover the space nicely */
     border-radius: 8px;
-}
-
-/* Paragraph styles */
-.about-text p {
+  }
+  
+  /* Paragraph styles */
+  .about-text p {
     font-size: 18px;
     line-height: 1.6;
     color: #555;
-    margin: 10px 40px;
-}
-
-/* Reverse content layout for alternating sections */
-.about-content.reverse {
+    margin: 10px 40px; /* Adjusted margin for better spacing */
+  }
+  
+  /* Reverse content layout for alternating sections */
+  .about-content.reverse {
     flex-direction: row-reverse;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    .about-main-heading {
+      font-size: 32px; /* Slightly reduce heading size */
+    }
+  
     .about-section {
-        flex-direction: column;
-        text-align: center;
+      width: 95%; /* Increase width for better use of space */
     }
-
+  
+    .about-text p {
+      font-size: 16px; /* Reduce font size for better readability */
+    }
+  
+    .about-image img {
+      max-height: 250px; /* Reduce image height for tablets */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .about-main-heading {
+      font-size: 28px; /* Further reduce heading size */
+      margin-bottom: 30px; /* Reduce margin for smaller screens */
+    }
+  
+    .about-section {
+      flex-direction: column; /* Stack sections vertically */
+      text-align: center;
+      padding: 15px; /* Reduce padding for smaller screens */
+    }
+  
     .about-content {
-        flex-direction: column;
+      flex-direction: column; /* Stack text and image vertically */
     }
-
+  
     .about-text,
     .about-image {
-        width: 100%;
-        padding: 0;
+      width: 100%; /* Full width for text and image */
+      padding: 0; /* Remove padding */
     }
-
+  
     .about-image {
-        margin-top: 20px;
+      margin-top: 20px; /* Add space between text and image */
     }
-
-    /* Adjust image height for mobile */
+  
     .about-image img {
-        max-height: 200px;
+      max-height: 200px; /* Further reduce image height for mobile */
     }
-}
+  
+    .about-text p {
+      margin: 10px 0; /* Adjust margin for better spacing */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .about-main-heading {
+      font-size: 24px; /* Further reduce heading size for mobile */
+      margin-bottom: 20px; /* Reduce margin for mobile */
+    }
+  
+    .about-section {
+      width: 100%; /* Full width for very small screens */
+      padding: 10px; /* Reduce padding further */
+    }
+  
+    .about-text p {
+      font-size: 14px; /* Further reduce font size for mobile */
+    }
+  
+    .about-image img {
+      max-height: 150px; /* Further reduce image height for very small screens */
+    }
+  }
