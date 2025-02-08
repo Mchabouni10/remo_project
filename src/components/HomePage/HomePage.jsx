@@ -9,76 +9,82 @@ import './HomePage.css';
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
 
+  const initializeSlider = () => {
+    const $slider = $('.slideshow .slider');
+    const maxItems = $('.item', $slider).length;
+
+    $slider.addClass('slideshow-left');
+
+    $('.slideshow-left')
+      .slick({
+        vertical: true,
+        verticalSwiping: true,
+        arrows: false,
+        infinite: true,
+        dots: true,
+        speed: 1000,
+        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+      })
+      .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (
+          currentSlide > nextSlide &&
+          nextSlide === 0 &&
+          currentSlide === maxItems - 1
+        ) {
+          $('.slideshow-right .slider').slick('slickGoTo', -1);
+          $('.slideshow-text').slick('slickGoTo', maxItems);
+        } else if (
+          currentSlide < nextSlide &&
+          currentSlide === 0 &&
+          nextSlide === maxItems - 1
+        ) {
+          $('.slideshow-right .slider').slick('slickGoTo', maxItems);
+          $('.slideshow-text').slick('slickGoTo', -1);
+        } else {
+          $('.slideshow-right .slider').slick(
+            'slickGoTo',
+            maxItems - 1 - nextSlide
+          );
+          $('.slideshow-text').slick('slickGoTo', nextSlide);
+        }
+      });
+
+    // Right slider initialization
+    $('.slideshow-right .slider').slick({
+      swipe: false,
+      vertical: true,
+      arrows: false,
+      infinite: true,
+      speed: 950,
+      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+      initialSlide: maxItems - 1,
+    });
+
+    // Text slider initialization
+    $('.slideshow-text').slick({
+      swipe: false,
+      vertical: true,
+      arrows: false,
+      infinite: true,
+      speed: 900,
+      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+    });
+  };
+
   useEffect(() => {
-    const initializeSlider = () => {
-      const $slider = $('.slideshow .slider');
-      const maxItems = $('.item', $slider).length;
+    initializeSlider();
 
-      $slider.addClass('slideshow-left');
-
-      $('.slideshow-left')
-        .slick({
-          vertical: true,
-          verticalSwiping: true,
-          arrows: false,
-          infinite: true,
-          dots: true,
-          speed: 1000,
-          cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-        })
-        .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-          if (
-            currentSlide > nextSlide &&
-            nextSlide === 0 &&
-            currentSlide === maxItems - 1
-          ) {
-            $('.slideshow-right .slider').slick('slickGoTo', -1);
-            $('.slideshow-text').slick('slickGoTo', maxItems);
-          } else if (
-            currentSlide < nextSlide &&
-            currentSlide === 0 &&
-            nextSlide === maxItems - 1
-          ) {
-            $('.slideshow-right .slider').slick('slickGoTo', maxItems);
-            $('.slideshow-text').slick('slickGoTo', -1);
-          } else {
-            $('.slideshow-right .slider').slick(
-              'slickGoTo',
-              maxItems - 1 - nextSlide
-            );
-            $('.slideshow-text').slick('slickGoTo', nextSlide);
-          }
-        });
-
-      // Right slider initialization
-      $('.slideshow-right .slider').slick({
-        swipe: false,
-        vertical: true,
-        arrows: false,
-        infinite: true,
-        speed: 950,
-        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-        initialSlide: maxItems - 1,
-      });
-
-      // Text slider initialization
-      $('.slideshow-text').slick({
-        swipe: false,
-        vertical: true,
-        arrows: false,
-        infinite: true,
-        speed: 900,
-        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-      });
+    const handleResize = () => {
+      $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
+      initializeSlider();
     };
 
-    initializeSlider();
+    window.addEventListener('resize', handleResize);
 
     // Cleanup on component unmount
     return () => {
-      $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick(
-        'unslick'
-      );
+      window.removeEventListener('resize', handleResize);
+      $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
     };
   }, []);
 
