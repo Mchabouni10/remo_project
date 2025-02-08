@@ -1,10 +1,11 @@
+/* Slideshow Container */
 .split-slideshow {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 74vh; /* Adjusted height */
-  width: 80%; /* Adjusted width */
-  margin: auto; 
+  height: 74vh;
+  width: 80%;
+  margin: auto;
   overflow: hidden;
   position: relative;
   margin-top: 2%;
@@ -12,8 +13,8 @@
 
 .slideshow {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   position: relative;
@@ -22,7 +23,7 @@
 }
 
 .item {
-  height: 70vh; /* Adjusted height */
+  height: 70vh;
   width: 100%;
   position: relative;
   overflow: hidden;
@@ -31,59 +32,48 @@
 .item img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures images scale properly */
+  object-fit: cover;
 }
 
-/* Dots Navigation */
+/* Futuristic Dots Navigation */
 .slick-dots {
   position: absolute;
   z-index: 100;
-  width: 7%;
-  bottom: 30%; /* Adjusted for better placement */
-  right: 2%;
-  color: #fff;
-  display: block;
+  width: 20%;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
 }
 
 .slick-dots li {
-  display: block;
-  width: 100%;
-  height: 5px;
+  display: inline-block;
+  margin: 0 8px;
 }
 
 .slick-dots li button {
   position: relative;
-  width: 60px;
-  height: 20px;
-  text-align: center;
-}
-
-.slick-dots li button:before {
-  content: '';
-  background: white;
-  color: white;
-  height: 4px;
-  width: 40px;
-  border-radius: 3px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  left: auto;
-  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease-in-out;
-  opacity: 1;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-.slick-dots li.slick-active button:before {
-  width: 70px;
-  background-color: black;
-  opacity: 3;
+.slick-dots li button:hover,
+.slick-dots li.slick-active button {
+  background: black;
+  border-color: black;
+  box-shadow: 0 0 12px black;
 }
 
 /* Estimation Button */
 .estimation-button {
   position: absolute;
-  bottom: 10%; /* More responsive positioning */
+  bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
   background-color: black;
@@ -102,6 +92,46 @@
   background-color: #333;
 }
 
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
+  padding: 10px 0;
+  height: 6vh;
+  position: relative;
+  bottom: 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-text {
+  font-family: "Dancing Script", cursive;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.social-icons {
+  display: flex;
+  gap: 25px;
+  font-size: 24px;
+}
+
+.social-icons svg {
+  color: black;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
   .split-slideshow {
@@ -114,8 +144,8 @@
   }
 
   .slick-dots {
-    bottom: 5%;
-    width: 10%;
+    bottom: 8%;
+    width: 15%;
   }
 
   .estimation-button {
@@ -127,41 +157,76 @@
 @media (max-width: 768px) {
   .split-slideshow {
     width: 95%;
-    height: 55vh;
+    height: 65vh;
   }
 
   .item {
-    height: 50vh;
+    height: 60vh;
   }
 
   .slick-dots {
-    bottom: 3%;
-    width: 12%;
+    bottom: 10%;
+    width: 22%;
   }
 
   .estimation-button {
-    padding: 10px 40px;
+    padding: 12px 40px;
     font-size: 16px;
+  }
+
+  .footer {
+    height: 5vh;
+    padding: 8px 0;
+  }
+
+  .footer-text {
+    font-size: 20px;
+  }
+
+  .social-icons {
+    gap: 20px;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .split-slideshow {
     width: 100%;
-    height: 60vh;
+    height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .item {
-    height: 40vh;
+    height: 70vh;
+  }
+
+  .item img {
+    object-fit: contain;
   }
 
   .slick-dots {
-    width: 15%;
-    bottom: 15%;
+    bottom: 12%;
+    width: 30%;
+  }
+
+  .slick-dots li button {
+    width: 12px;
+    height: 12px;
+  }
+
+  .slick-dots li button:hover,
+  .slick-dots li.slick-active button {
+    background: black;
+    border-color: black;
+    box-shadow: 0 0 10px black;
   }
 
   .estimation-button {
-    padding: 8px 30px;
+    padding: 10px 35px;
     font-size: 14px;
+    bottom: 15%;
   }
 }
+

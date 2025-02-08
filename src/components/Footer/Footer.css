@@ -1,4 +1,4 @@
-/* Footer.css */
+/* Footer Base Styles */
 .footer {
     display: flex;
     justify-content: center;
@@ -7,78 +7,115 @@
     background-color: white;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
     padding: 10px 0;
-    height: 4vh;
-  }
-  
-  .footer-content {
+    height: auto;
+    position: relative;
+    bottom: 0;
+}
+
+/* Flexbox for center alignment */
+.footer-content {
     display: flex;
-    align-items: center; /* Align items in the same row */
-    gap: 20px; /* Space between "Visit us:" and the icons */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    justify-content: center; /* Center content on smaller screens */
-  }
-  
-  .footer-text {
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* "Visit us" text */
+.footer-text {
     font-family: "Dancing Script", cursive;
-    font-size: 24px; /* Default font size */
+    font-size: 24px;
     font-weight: bold;
     color: black;
-    margin: 0; /* Remove default margin */
-  }
-  
-  /* Import Google Font */
-  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
-  
-  .social-icons {
+    margin: 0;
+}
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+/* Social icons */
+.social-icons {
     display: flex;
-    gap: 25px; /* Increase spacing between icons */
-    font-size: 24px; /* Default icon size */
-  }
-  
-  .social-icons svg {
+    gap: 25px;
+    font-size: 24px;
+}
+
+.social-icons svg {
     color: black;
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
+}
+
+/* Mobile-Only "Call Us" Section */
+.call-us {
+    display: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+/* === Fix Footer Layout === */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* Pushes footer down */
+}
+
+/* === Responsive Adjustments === */
+@media (max-width: 768px) {
     .footer {
-      padding: 8px 0; /* Reduce padding for smaller screens */
+        padding: 8px 0;
     }
-  
+
     .footer-content {
-      gap: 15px; /* Reduce gap between items */
+        gap: 15px;
+        flex-direction: column; /* Stack content vertically */
     }
-  
+
     .footer-text {
-      font-size: 20px; /* Reduce font size for smaller screens */
+        font-size: 20px;
     }
-  
+
     .social-icons {
-      gap: 20px; /* Reduce gap between icons */
-      font-size: 20px; /* Reduce icon size */
+        gap: 20px;
+        font-size: 20px;
     }
-  }
-  
-  @media (max-width: 480px) {
+
+    /* Show "Call Us" on Mobile */
+    .call-us {
+        display: block;
+    }
+}
+
+@media (max-width: 480px) {
     .footer {
-      padding: 5px 0; /* Further reduce padding for mobile screens */
+        padding: 5px 0;
     }
-  
+
     .footer-content {
-      gap: 10px; /* Further reduce gap between items */
-      flex-direction: column; /* Stack items vertically on very small screens */
+        gap: 10px;
     }
-  
+
     .footer-text {
-      font-size: 18px; /* Further reduce font size for mobile screens */
+        font-size: 18px;
     }
-  
+
     .social-icons {
-      gap: 15px; /* Further reduce gap between icons */
-      font-size: 18px; /* Further reduce icon size */
+        gap: 15px;
+        font-size: 18px;
     }
-  }
-  
+
+    .call-us {
+        font-size: 18px;
+    }
+}
+
   
   
   

@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 1%;
+  padding: .2%;
   margin: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   position: sticky;
@@ -102,35 +102,60 @@
 
   .links-container {
     position: absolute;
-    top: 100%; /* Position below the navbar */
+    top: 100%;
     left: 0;
     width: 100%;
     background-color: white;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-in-out;
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   }
 
   .links-container.active {
-    max-height: 500px; /* Adjust based on your content */
+    max-height: 300px; /* Ensure dropdown opens */
+    opacity: 1;
+    transform: translateY(0);
   }
 
   #nav ul {
     flex-direction: column;
     width: 100%;
+    padding: 0;
   }
 
   #nav ul li {
-    margin: 10px 0; /* Adjust spacing for mobile */
+    margin: 8px 0; /* Reduce space between menu items */
   }
 
   #nav ul li a {
-    font-size: 20px; /* Adjust font size for mobile */
+    font-size: 18px; /* Smaller font for mobile */
+    padding: 1px 0; /* Add padding for better spacing */
+    display: block;
+    width: 100%;
+    text-align: center;
   }
 }
+
+/* Reduce Navbar Height */
+@media (max-width: 768px) {
+  #nav {
+    padding: 2px 0; /* Reduce navbar padding */
+  }
+
+  .CompanyLogo {
+    height: 50px; /* Smaller logo */
+  }
+
+  .hamburger-icon {
+    font-size: 22px;
+  }
+}
+
 
   
 
