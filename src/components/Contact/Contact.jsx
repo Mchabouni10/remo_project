@@ -140,10 +140,10 @@ const Contact = () => {
         <div className="contact-info">
           <h2 className="contact-info-heading">Contact Information</h2>
           <p className="contact-info-text">
-            <FontAwesomeIcon icon={faEnvelope} style={{ color: 'grey' }} /> Email: rawdahremodeling@gmail.com
+            <FontAwesomeIcon icon={faEnvelope} style={{ color: 'black' }} /> Email: rawdahremodeling@gmail.com
           </p>
           <p className="contact-info-text">
-            <FontAwesomeIcon icon={faPhone} style={{ color: 'grey' }} /> Phone: (224) 817-3264
+            <FontAwesomeIcon icon={faPhone} style={{ color: 'black' }} /> Phone: (224) 817-3264
           </p>
         </div>
       </div>

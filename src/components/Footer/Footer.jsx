@@ -9,9 +9,6 @@ function Footer() {
       <div className="footer-content">
         <p className="footer-text">Visit us:</p>
 
-        {/* Mobile-Only Call Us */}
-        <p className="call-us">Call Us: (224) 817-3264</p>
-
         <div className="social-icons">
           <a href="#" className="icon facebook" target="_blank" rel="noopener noreferrer">
             <FontAwesomeIcon icon={faFacebookF} />
@@ -23,6 +20,8 @@ function Footer() {
             <FontAwesomeIcon icon={faXTwitter} />
           </a>
         </div>
+            {/* Mobile-Only Call Us */}
+            <p className="call-us">Call Us: (224) 817-3264</p>
       </div>
     </div>
   );

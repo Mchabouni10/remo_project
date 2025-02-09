@@ -12,18 +12,23 @@ import Contact from "./components/Contact/Contact";
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
-      </Routes>
-      <Footer />
+      <div className="app-container">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </Router>
   );
 }
 
 export default App;
+
 

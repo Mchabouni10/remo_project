@@ -7,9 +7,7 @@
     background-color: white;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
     padding: 10px 0;
-    height: auto;
-    position: relative;
-    bottom: 0;
+    margin-top: auto;
 }
 
 /* Flexbox for center alignment */
@@ -27,7 +25,6 @@
     font-size: 24px;
     font-weight: bold;
     color: black;
-    margin: 0;
 }
 
 /* Google Font */
@@ -53,19 +50,7 @@
     text-align: center;
 }
 
-/* === Fix Footer Layout === */
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 
-main {
-    flex: 1; /* Pushes footer down */
-}
 
 /* === Responsive Adjustments === */
 @media (max-width: 768px) {
@@ -75,7 +60,8 @@ main {
 
     .footer-content {
         gap: 15px;
-        flex-direction: column; /* Stack content vertically */
+        flex-direction: row; /* Keep content in a row */
+        flex-wrap: wrap; /* Allow wrapping if needed */
     }
 
     .footer-text {
@@ -100,6 +86,8 @@ main {
 
     .footer-content {
         gap: 10px;
+        flex-direction: row; /* Keep content in a row */
+        flex-wrap: wrap; /* Allow wrapping if needed */
     }
 
     .footer-text {

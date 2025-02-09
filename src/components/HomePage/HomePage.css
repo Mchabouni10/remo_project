@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 75vh;
   width: 80%;
   margin: auto;
   overflow: hidden;
@@ -20,7 +20,18 @@
   height: 100%;
   position: relative;
   z-index: 1;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  
+}
+
+
+/* Fade effect for slides */
+.slick-slide {
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+.slick-active {
+  opacity: 1;
 }
 
 .item {
@@ -29,6 +40,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 1, 1);
 }
 
 .item img {
@@ -93,51 +105,13 @@
   background-color: #333;
 }
 
-/* Footer */
-.footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: white;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
-  padding: 10px 0;
-  height: 6vh;
-  position: relative;
-  bottom: 0;
-}
 
-.footer-content {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footer-text {
-  font-family: "Dancing Script", cursive;
-  font-size: 24px;
-  font-weight: bold;
-  color: black;
-  margin: 0;
-}
-
-.social-icons {
-  display: flex;
-  gap: 25px;
-  font-size: 24px;
-}
-
-.social-icons svg {
-  color: black;
-}
 
 /* Responsive Adjustments */
 @media (max-width: 1024px) {
   .split-slideshow {
     width: 90%;
-    height: 65vh;
+    height: 75vh;
   }
 
   .item {
