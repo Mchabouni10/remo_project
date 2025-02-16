@@ -147,6 +147,15 @@ const Contact = () => {
           </p>
         </div>
       </div>
+
+      {/* Disclaimer Message */}
+      <div className="disclaimer-message">
+        <p>
+          By clicking "Request Consultation," you agree to allow Rawdah Remodeling to contact you via text message or phone call to discuss your project. 
+          You are under no obligation to proceed with any services if you are not satisfied with the consultation. 
+          Your privacy is important to us, and your information will not be shared with third parties.
+        </p>
+      </div>
     </div>
   );
 };
