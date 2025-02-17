@@ -12,6 +12,7 @@ const EstimateForm = ({ show, handleClose }) => {
       email: event.target.email.value,
       phone: event.target.phone.value,
       message: event.target.message.value,
+      referredBy: event.target.referredBy.value, // Add referredBy field
     };
 
     emailjs.send(
@@ -56,6 +57,10 @@ const EstimateForm = ({ show, handleClose }) => {
           <label>
             Message:
             <textarea name="message" required placeholder="Enter your message"></textarea>
+          </label>
+          <label>
+            Referred By:
+            <input type="text" name="referredBy" placeholder="Optional" />
           </label>
           <button type="submit">Submit</button>
         </form>

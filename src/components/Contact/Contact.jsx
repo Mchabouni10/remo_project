@@ -11,6 +11,7 @@ const Contact = () => {
     email: '',
     phone: '',
     message: '',
+    referredBy: '', // Added referredBy field
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -49,6 +50,7 @@ const Contact = () => {
         email: formData.email,
         phone: formData.phone,
         message: formData.message,
+        referredBy: formData.referredBy, // Added referredBy to templateParams
       };
   
       emailjs.send(
@@ -69,6 +71,7 @@ const Contact = () => {
           email: '',
           phone: '',
           message: '',
+          referredBy: '', // Reset referredBy field
         });
 
         setTimeout(() => {
@@ -133,6 +136,10 @@ const Contact = () => {
               Message:
               <textarea name="message" value={formData.message} onChange={handleChange} required placeholder="Please enter your message"></textarea>
               {formErrors.message && <span className="error">{formErrors.message}</span>}
+            </label>
+            <label>
+              Referred By:
+              <input type="text" name="referredBy" value={formData.referredBy} onChange={handleChange} placeholder="Optional" />
             </label>
             <button type="submit">REQUEST CONSULTATION</button>
           </form>
