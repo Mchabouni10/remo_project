@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="logo-container">
         <img
           className="CompanyLogo"
-          src="/images/RawdahRemodelingtransparent.png"
+          src="/images/logo4.png"
           alt="Company Logo"
         />
       </div>
