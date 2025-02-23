@@ -66,6 +66,13 @@
   .about-content.reverse {
     flex-direction: row-reverse;
   }
+
+  .logo3 {
+    width: auto;
+    height: auto;
+    margin-left: 20%;
+    margin-top: 1.5%;
+  }
   
   /* Responsive adjustments */
   @media (max-width: 1024px) {

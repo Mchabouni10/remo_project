@@ -1,109 +1,145 @@
+/* Import a Futuristic Font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&display=swap");
+
 /* Footer Base Styles */
 .footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    background-color: white;
-    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.4);
-    padding: 10px 0;
-    margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: white; /* Original background color */
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  padding: 0 0; /* Reduced padding for a slimmer look */
+  margin-top: auto;
 }
 
 /* Flexbox for center alignment */
 .footer-content {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  gap: 30px; /* Increased gap for better spacing */
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* "Visit us" text */
 .footer-text {
-    font-family: "Dancing Script", cursive;
-    font-size: 24px;
-    font-weight: bold;
-    color: black;
+  font-family: "Orbitron", sans-serif; /* Futuristic font */
+  font-size: 20px;
+  font-weight: 500;
+  color: black; /* Original text color */
+  text-transform: capitalize; /* Capitalize only the first letter of each word */
+  letter-spacing: 1px; /* Spacing for better readability */
+  margin-right: 20px; /* Add space between text and logos */
 }
-
-/* Google Font */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
 
 /* Social icons */
 .social-icons {
-    display: flex;
-    gap: 25px;
-    font-size: 24px;
+  display: flex;
+  gap: 25px;
+  font-size: 18px;
 }
 
-.social-icons svg {
-    color: black;
+.social-icons a {
+  color: white; /* Initial text color */
+  text-decoration: none;
+  position: relative;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #333, black);
+  transition: all 0.6s ease-in-out; /* Smooth transition for all properties */
+  transform-style: preserve-3d; /* Enable 3D transformations */
+  perspective: 1000px; /* Add perspective for 3D effect */
+  overflow: hidden; /* Hide overflow for pseudo-element */
 }
+
+/* Pseudo-element for flipped background */
+.social-icons a::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ffffff, #333); /* Flipped gradient */
+  border-radius: 12px;
+  transform: rotateY(180deg); /* Start flipped */
+  backface-visibility: hidden; /* Hide the back side */
+  transition: transform 0.6s ease-in-out; /* Smooth transition for flipping */
+}
+
+/* Hover effect */
+.social-icons a:hover {
+  color: black; /* Flipped text color */
+  background: linear-gradient(90deg, white, #333);
+}
+
+
+
 
 /* Mobile-Only "Call Us" Section */
 .call-us {
-    display: none;
-    font-size: 20px;
-    font-weight: bold;
-    color: black;
-    text-align: center;
+  display: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  font-family: "Orbitron", sans-serif; /* Futuristic font */
+  text-transform: capitalize; /* Capitalize only the first letter of each word */
+  letter-spacing: 1px;
 }
-
-
 
 /* === Responsive Adjustments === */
 @media (max-width: 768px) {
-    .footer {
-        padding: 8px 0;
-    }
+  .footer {
+    padding: 15px 0; /* Reduced padding for mobile */
+  }
 
-    .footer-content {
-        gap: 15px;
-        flex-direction: row; /* Keep content in a row */
-        flex-wrap: wrap; /* Allow wrapping if needed */
-    }
+  .footer-content {
+    gap: 20px;
+    flex-direction: column; /* Stack items vertically on mobile */
+  }
 
-    .footer-text {
-        font-size: 20px;
-    }
+  .footer-text {
+    font-size: 18px;
+    margin-right: 0; /* Remove margin on mobile */
+  }
 
-    .social-icons {
-        gap: 20px;
-        font-size: 20px;
-    }
+  .social-icons {
+    gap: 20px;
+    font-size: 20px;
+  }
 
-    /* Show "Call Us" on Mobile */
-    .call-us {
-        display: block;
-    }
+  /* Show "Call Us" on Mobile */
+  .call-us {
+    display: block;
+  }
 }
 
 @media (max-width: 480px) {
-    .footer {
-        padding: 5px 0;
-    }
+  .footer {
+    padding: 10px 0;
+  }
 
-    .footer-content {
-        gap: 10px;
-        flex-direction: row; /* Keep content in a row */
-        flex-wrap: wrap; /* Allow wrapping if needed */
-    }
+  .footer-content {
+    gap: 15px;
+  }
 
-    .footer-text {
-        font-size: 18px;
-    }
+  .footer-text {
+    font-size: 16px;
+  }
 
-    .social-icons {
-        gap: 15px;
-        font-size: 18px;
-    }
+  .social-icons {
+    gap: 15px;
+    font-size: 18px;
+  }
 
-    .call-us {
-        font-size: 18px;
-    }
+  .call-us {
+    font-size: 16px;
+  }
 }
-
   
   
   

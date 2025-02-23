@@ -1,11 +1,14 @@
+/* Import a Futuristic Font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&display=swap");
+
 #nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: white; /* Original background color */
   padding: 1%;
   margin: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Original shadow */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -30,33 +33,46 @@
 }
 
 #nav ul li {
-  margin-left: 20px;
+  margin-left: 25px; /* Slightly more spacing */
 }
 
 #nav ul li a {
   text-align: center;
-  font-size: 25px;
-  color: black;
+  font-size: 20px;
+  color: black; /* Original text color */
   text-decoration: none;
-  transition: 0.5s;
+  font-family: "Orbitron", sans-serif; /* Futuristic font */
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+
+#nav ul li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: black; /* Original underline color */
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-in-out;
+}
+
+#nav ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 #nav ul li a:hover {
-  text-decoration: underline;
-}
-
-.UserIcon {
-  color: black;
-  transition: 0.5s;
-}
-
-.UserIcon:hover {
-  color: black;
+  color: #555; /* Slightly lighter black on hover */
 }
 
 .CompanyLogo {
   height: 70px;
   width: auto;
+  /* No glow effect */
 }
 
 /* Hamburger Icon (Hidden by Default) */
@@ -64,35 +80,29 @@
   display: none;
   font-size: 25px;
   cursor: pointer;
+  color: black; /* Original icon color */
 }
-
 
 /* Style for Active Page */
 .links-container ul li a.active {
   font-weight: bold; /* Make it stand out */
-  color: black; /* Change the text color */
-  transition: 0.3s ease-in-out;
-}
-
-.UserIcon.active {
-  color: black;
+  color: black; /* Original active text color */
 }
 
 /* Contact Button Style */
 #nav ul li .contact-button {
-  background-color: black; /* Black background */
-  color: white !important; /* White text */
-  padding: 1px 5px; /* Button padding */
-  border-radius: 4px; /* Rounded corners */
-  transition: 0.3s ease-in-out;
+  background-color: black; /* Original button background */
+  color: white !important; /* Original button text color */
+  padding: 8px 20px; /* Button padding */
+  border-radius: 25px; /* Rounded corners */
+  transition: all 0.3s ease-in-out;
 }
 
-/* Hover effect - Reverse colors */
+/* Hover effect - Slight scale */
 #nav ul li .contact-button:hover {
-  background-color: white;
-  color: black !important;
+  transform: scale(1.05);
+  background-color: #333; /* Slightly lighter black on hover */
 }
-
 
 /* Mobile Menu Styles */
 @media (max-width: 768px) {
@@ -105,7 +115,7 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: white;
+    background-color: white; /* Original background color */
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -129,22 +139,20 @@
   }
 
   #nav ul li {
-    margin: 8px 0; /* Reduce space between menu items */
+    margin: 12px 0; /* More spacing between items */
   }
 
   #nav ul li a {
     font-size: 18px; /* Smaller font for mobile */
-    padding: 1px 0; /* Add padding for better spacing */
+    padding: 10px 0; /* Add padding for better spacing */
     display: block;
     width: 100%;
     text-align: center;
   }
-}
 
-/* Reduce Navbar Height */
-@media (max-width: 768px) {
+  /* Reduce Navbar Height */
   #nav {
-    padding: 2px 0; /* Reduce navbar padding */
+    padding: 10px 0; /* Reduce navbar padding */
   }
 
   .CompanyLogo {

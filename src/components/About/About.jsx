@@ -4,18 +4,18 @@ import "./About.css"; // Import the CSS file
 function About() {
   return (
     <>
-      <h1 className="about-main-heading">About Rawdah Remodeling</h1>
+      <h1 className="about-main-heading">About Rawdah Remodeling Company</h1>
       
       <div className="about-section">
         <div className="about-content">
           <div className="about-text">
             <p>
-              Welcome to <strong>Rawdah Remodeling</strong>, where your dream home becomes a reality.  
+              Welcome to <strong>Rawdah Remodeling Company</strong>, where your dream home becomes a reality.  
               At Rawdah Remodeling, we are committed to transforming houses into beautiful, functional spaces that reflect your vision.
             </p>
           </div>
-          <div className="about-image">
-            <img src="./images/RawdahRemodelingtransparent.png" alt="Home Transformation" />
+          <div className="logo3">
+            <img src="./images/logo3.png" alt="Home Transformation" />
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@ function About() {
         <div className="about-content reverse">
           <div className="about-text">
             <p>
-              <strong>Rawdah Remodeling</strong> is not just a remodeling company; it’s a **friendly, welcoming environment** where creativity meets craftsmanship.  
+              <strong>Rawdah Remodeling Company</strong> is not just a remodeling company; it’s a **friendly, welcoming environment** where creativity meets craftsmanship.  
               We proudly serve <strong>Chicago and surrounding areas within a 50-mile radius</strong>, ensuring that homeowners in our community have access to high-quality remodeling services.
             </p>
           </div>
@@ -80,7 +80,7 @@ function About() {
         <div className="about-content reverse">
           <div className="about-text">
             <p>
-              Let <h3>Rawdah Remodeling</h3>bring your ideas to life—because your dream home deserves the best.
+              Let <h3>Rawdah Remodeling Company</h3>bring your ideas to life—because your dream home deserves the best.
             </p>
           </div>
           <div className="about-image">
