@@ -52,7 +52,7 @@ function About() {
         <div className="about-content reverse">
           <div className="about-text">
             <p>
-              <strong>Rawdah Remodeling Company</strong> is not just a remodeling company; it’s a **friendly, welcoming environment** where creativity meets craftsmanship.  
+              <strong>Rawdah Remodeling Company</strong> is not just a remodeling company; it’s a <strong>friendly, welcoming environment</strong> where creativity meets craftsmanship.  
               We proudly serve <strong>Chicago and surrounding areas within a 50-mile radius</strong>, ensuring that homeowners in our community have access to high-quality remodeling services.
             </p>
           </div>
@@ -80,7 +80,7 @@ function About() {
         <div className="about-content reverse">
           <div className="about-text">
             <p>
-              Let <h3>Rawdah Remodeling Company</h3>bring your ideas to life—because your dream home deserves the best.
+              Let <strong>Rawdah Remodeling Company</strong> bring your ideas to life—because your dream home deserves the best.
             </p>
           </div>
           <div className="about-image">

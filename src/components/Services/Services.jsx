@@ -9,7 +9,8 @@ function Services() {
 
   const scrollToSection = (ref) => {
     const offset = 120; // Adjust this value to leave space for the title
-    const elementPosition = ref.current.getBoundingClientRect().top + window.scrollY;
+    const elementPosition =
+      ref.current.getBoundingClientRect().top + window.scrollY;
     window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
   };
 
@@ -18,9 +19,15 @@ function Services() {
       <h1 className="services-main-heading">Our Services</h1>
       <div className="service-summary">
         <ul>
-          <li onClick={() => scrollToSection(kitchenRef)}>Kitchen Remodeling</li>
-          <li onClick={() => scrollToSection(bathroomRef)}>Bathroom Remodeling</li>
-          <li onClick={() => scrollToSection(basementRef)}>Basement Remodeling</li>
+          <li onClick={() => scrollToSection(kitchenRef)}>
+            Kitchen Remodeling
+          </li>
+          <li onClick={() => scrollToSection(bathroomRef)}>
+            Bathroom Remodeling
+          </li>
+          <li onClick={() => scrollToSection(basementRef)}>
+            Basement Remodeling
+          </li>
           <li onClick={() => scrollToSection(otherRef)}>Other Services</li>
         </ul>
       </div>
@@ -50,6 +57,9 @@ function Services() {
 
       <div className="service-section" ref={bathroomRef}>
         <div className="service-content">
+          <div className="service-image">
+            <img src="./images/remo-bathroom.jpg" alt="Bathroom Remodeling" />
+          </div>
           <div className="service-text">
             <h3 className="service-heading">Bathroom Remodeling</h3>
             <p className="service-paragraph">
@@ -64,9 +74,6 @@ function Services() {
               our professional insights to create a bathroom that exceeds your
               expectations.
             </p>
-          </div>
-          <div className="service-image">
-            <img src="./images/remo-bathroom.jpg" alt="Bathroom Remodeling" />
           </div>
         </div>
       </div>
@@ -97,6 +104,9 @@ function Services() {
 
       <div className="service-section" ref={otherRef}>
         <div className="service-content">
+          <div className="service-image">
+            <img src="./images/remo-service.jpg" alt="Other Services" />
+          </div>
           <div className="service-text">
             <h3 className="service-heading">Other Services</h3>
             <p className="service-paragraph">
@@ -111,9 +121,6 @@ function Services() {
               regulations.
             </p>
           </div>
-          <div className="service-image">
-            <img src="./images/remo-service.jpg" alt="Other Services" />
-          </div>
         </div>
       </div>
     </>
@@ -121,4 +128,3 @@ function Services() {
 }
 
 export default Services;
-

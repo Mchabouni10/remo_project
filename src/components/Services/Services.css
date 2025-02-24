@@ -1,10 +1,11 @@
+
 /* Container for each service section */
 .service-section {
   display: flex;
-  align-items: stretch; /* Stretch children to match height */
+  align-items: stretch;
   justify-content: space-between;
   margin: 2% auto;
-  width: 90%; /* Adjusted for smaller screens */
+  width: 90%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   padding: 20px;
   background-color: #f9f9f9;
@@ -14,7 +15,7 @@
 /* Content container */
 .service-content {
   display: flex;
-  align-items: stretch; /* Stretch children to match height */
+  align-items: stretch;
   width: 100%;
 }
 
@@ -25,43 +26,45 @@
 
 /* Text container */
 .service-text {
-  width: 50%; /* Default width for desktop/tablet */
-  padding: 20px; /* Add padding to create space around text */
+  width: 50%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center text vertically */
+  justify-content: center;
 }
 
 /* Image container */
 .service-image {
-  width: 50%; /* Default width for desktop/tablet */
-  padding: 20px; /* Add padding to create space around image */
+  width: 50%;
+  padding: 20px;
   display: flex;
-  align-items: center; /* Center image vertically */
+  align-items: center;
 }
 
 /* Ensure images fill their container and maintain aspect ratio */
 .service-image img {
   width: 100%;
   height: auto;
-  max-height: 300px; /* Limit image height for consistency */
-  object-fit: cover; /* Ensure images cover the space nicely */
+  max-height: 300px;
+  object-fit: cover;
   border-radius: 8px;
 }
 
 /* Heading styles specific to service sections */
 .service-section h3 {
   font-size: 28px;
+  font-family: "Orbitron", sans-serif;
   color: #333;
-  margin-bottom: 15px; /* Add more space below the heading */
+  margin-bottom: 15px;
 }
 
 /* Paragraph styles specific to service sections */
 .service-section p {
   font-size: 18px;
+  font-family: exo 2, sans-serif;
   line-height: 1.6;
   color: #333;
-  margin: 10px 0; /* Add spacing between paragraphs */
+  margin: 10px 0;
 }
 
 /* Main heading style */
@@ -76,61 +79,63 @@
 /* Service Summary Container */
 .service-summary {
   display: flex;
-  justify-content: center; /* Center the list horizontally */
-  margin-bottom: 20px; /* Reduced margin for smaller screens */
-  position: sticky; /* Make the container sticky */
-  top: 100px; /* Stick to the top of the viewport */
-  z-index: 1000; /* Ensure it stays above other content */
-  padding: 10px 0; /* Add padding for better spacing */
+  justify-content: center;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 60px; /* Adjusted to account for navbar height */
+  z-index: 999; /* Lower than navbar and mobile dropdown */
+  padding: 10px 0;
 }
 
 /* Service Links List */
 .service-summary ul {
   display: flex;
-  gap: 10px; /* Reduced gap for smaller screens */
-  list-style: none; /* Remove bullet points */
+  gap: 10px;
+  list-style: none;
   padding: 0;
   margin: 0;
-  flex-wrap: wrap; /* Allow wrapping on smaller screens */
-  justify-content: center; /* Center the wrapped items */
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* Service Links */
 .service-summary li {
   cursor: pointer;
-  background: linear-gradient(90deg, #333, black); /* Gradient background */
-  color: white !important; /* White text */
-  padding: 8px 16px; /* Reduced padding for smaller screens */
-  border: none; /* Remove default border */
-  border-radius: 25px; /* Rounded corners */
-  font-family: "Orbitron", sans-serif; /* Futuristic font */
-  font-size: 16px; /* Smaller font size for smaller screens */
+  background: linear-gradient(90deg, #333, black);
+  color: white !important;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 25px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 16px;
   font-weight: 500;
-  text-transform: uppercase; /* Uppercase text */
-  letter-spacing: 1px; /* Spacing for better readability */
-  transition: all 0.3s ease-in-out; /* Smooth transition */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Glow effect */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Hover Effect for Service Links */
 .service-summary li:hover {
-  transform: scale(1.05); /* Slight scale on hover */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Stronger glow on hover */
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .service-section {
-    width: 95%; /* Adjusted width for tablets */
+    width: 95%;
   }
+
+
 
   .service-text,
   .service-image {
-    padding: 15px; /* Reduced padding for tablets */
+    padding: 15px;
   }
 
   .service-image img {
-    max-height: 250px; /* Adjusted height for tablets */
+    max-height: 250px;
   }
 }
 
@@ -138,7 +143,7 @@
   .service-section {
     flex-direction: column;
     text-align: center;
-    width: 90%; /* Adjusted width for smaller screens */
+    width: 90%;
   }
 
   .service-content {
@@ -147,26 +152,24 @@
 
   .service-text,
   .service-image {
-    width: 100%; /* Full width for mobile */
-    padding: 10px; /* Reduced padding for mobile */
+    width: 100%;
+    padding: 10px;
   }
 
-  /* Ensure image is above text by default */
   .service-content .service-image {
-    order: 1; /* Image comes first */
+    order: 1;
   }
 
   .service-content .service-text {
-    order: 2; /* Text comes after image */
+    order: 2;
   }
 
-  /* Reverse layout for mobile (text above image) */
   .service-content.reverse-mobile .service-image {
-    order: 2; /* Image comes after text */
+    order: 2;
   }
 
   .service-content.reverse-mobile .service-text {
-    order: 1; /* Text comes first */
+    order: 1;
   }
 
   .service-image {
@@ -174,42 +177,42 @@
   }
 
   .service-image img {
-    max-height: 200px; /* Smaller height for mobile */
+    max-height: 200px;
   }
 
   .service-summary {
-    top: 60x; /* Stick to the top of the viewport */
-    padding: 8px 0; /* Reduced padding for mobile */
+    top: 80px;
+    padding: 8px 0;
   }
 
   .service-summary ul {
-    gap: 8px; /* Reduced gap for mobile */
+    gap: 8px;
   }
 
   .service-summary li {
-    font-size: 14px; /* Smaller font size for mobile */
-    padding: 6px 12px; /* Smaller padding for mobile */
+    font-size: 14px;
+    padding: 6px 12px;
   }
 }
 
 @media (max-width: 480px) {
   .service-section {
-    width: 100%; /* Full width for very small screens */
-    padding: 15px; /* Reduced padding for very small screens */
+    width: 100%;
+    padding: 15px;
   }
 
   .service-text,
   .service-image {
-    padding: 10px; /* Reduced padding for very small screens */
+    padding: 10px;
   }
 
   .service-image img {
-    max-height: 150px; /* Smaller height for very small screens */
+    max-height: 150px;
   }
 
   .service-summary li {
-    font-size: 12px; /* Smaller font size for very small screens */
-    padding: 5px 10px; /* Smaller padding for very small screens */
+    font-size: 12px;
+    padding: 5px 10px;
   }
 }
  

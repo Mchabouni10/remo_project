@@ -11,7 +11,7 @@ const Contact = () => {
     email: '',
     phone: '',
     message: '',
-    referredBy: '', // Added referredBy field
+    referredBy: '',
   });
 
   const [formErrors, setFormErrors] = useState({});
@@ -50,7 +50,7 @@ const Contact = () => {
         email: formData.email,
         phone: formData.phone,
         message: formData.message,
-        referredBy: formData.referredBy, // Added referredBy to templateParams
+        referredBy: formData.referredBy,
       };
   
       emailjs.send(
@@ -71,7 +71,7 @@ const Contact = () => {
           email: '',
           phone: '',
           message: '',
-          referredBy: '', // Reset referredBy field
+          referredBy: '',
         });
 
         setTimeout(() => {
@@ -147,10 +147,10 @@ const Contact = () => {
         <div className="contact-info">
           <h2 className="contact-info-heading">Contact Information</h2>
           <p className="contact-info-text">
-            <FontAwesomeIcon icon={faEnvelope} style={{ color: 'black' }} /> Email: rawdahremodeling@gmail.com
+            <FontAwesomeIcon icon={faEnvelope} style={{ color: 'black' }} /> <strong>Email :</strong> rawdahremodeling@gmail.com
           </p>
           <p className="contact-info-text">
-            <FontAwesomeIcon icon={faPhone} style={{ color: 'black' }} /> Phone: (224) 817-3264
+            <FontAwesomeIcon icon={faPhone} style={{ color: 'black' }} /> <strong>Phone :</strong> (224) 817-3264
           </p>
         </div>
       </div>
