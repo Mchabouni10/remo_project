@@ -29,7 +29,7 @@ function About() {
             </p>
           </div>
           <div className="about-image">
-            <img src="./images/about2.jpg" alt="Expert Remodeling" />
+            <img src="./images/TogetherReplace.jpg" alt="Expert Remodeling" />
           </div>
         </div>
       </div>

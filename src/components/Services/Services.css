@@ -6,6 +6,7 @@
   justify-content: space-between;
   margin: 2% auto;
   width: 90%;
+  max-width: 1200px; /* Add max-width to prevent stretching on wide screens */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   padding: 20px;
   background-color: #f9f9f9;
@@ -75,15 +76,14 @@
   margin-bottom: 20px;
   color: black;
 }
-
 /* Service Summary Container */
 .service-summary {
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
   position: sticky;
-  top: 60px; /* Adjusted to account for navbar height */
-  z-index: 999; /* Lower than navbar and mobile dropdown */
+  top: 12%; /* Adjust based on navbar height */
+  z-index: 100; /* Lower than navbar */
   padding: 10px 0;
 }
 
@@ -118,7 +118,6 @@
 /* Hover Effect for Service Links */
 .service-summary li:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 /* Responsive adjustments */
@@ -181,7 +180,7 @@
   }
 
   .service-summary {
-    top: 80px;
+    top: 8%;
     padding: 8px 0;
   }
 
@@ -199,6 +198,10 @@
   .service-section {
     width: 100%;
     padding: 15px;
+  }
+
+  .service-summary {
+    top: 60px; /* Adjust for mobile navbar height */
   }
 
   .service-text,
