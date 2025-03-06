@@ -8,15 +8,14 @@ import './HomePage.css';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isSlickInitialized, setIsSlickInitialized] = useState(false);
 
   const initializeSlider = () => {
     const $slider = $('.slideshow .slider');
     const maxItems = $('.item', $slider).length;
 
-    $slider.addClass('slideshow-left');
-
-    $('.slideshow-left')
-      .slick({
+    if (!$slider.hasClass('slick-initialized')) {
+      $slider.addClass('slideshow-left').slick({
         vertical: true,
         verticalSwiping: true,
         arrows: false,
@@ -24,77 +23,106 @@ const HomePage = () => {
         dots: true,
         speed: 1000,
         cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-      })
-      .on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        if (
-          currentSlide > nextSlide &&
-          nextSlide === 0 &&
-          currentSlide === maxItems - 1
-        ) {
+      }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        if (currentSlide > nextSlide && nextSlide === 0 && currentSlide === maxItems - 1) {
           $('.slideshow-right .slider').slick('slickGoTo', -1);
           $('.slideshow-text').slick('slickGoTo', maxItems);
-        } else if (
-          currentSlide < nextSlide &&
-          currentSlide === 0 &&
-          nextSlide === maxItems - 1
-        ) {
+        } else if (currentSlide < nextSlide && currentSlide === 0 && nextSlide === maxItems - 1) {
           $('.slideshow-right .slider').slick('slickGoTo', maxItems);
           $('.slideshow-text').slick('slickGoTo', -1);
         } else {
-          $('.slideshow-right .slider').slick(
-            'slickGoTo',
-            maxItems - 1 - nextSlide
-          );
+          $('.slideshow-right .slider').slick('slickGoTo', maxItems - 1 - nextSlide);
           $('.slideshow-text').slick('slickGoTo', nextSlide);
         }
       });
+    }
 
-    // Right slider initialization
-    $('.slideshow-right .slider').slick({
-      swipe: false,
-      vertical: true,
-      arrows: false,
-      infinite: true,
-      speed: 950,
-      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-      initialSlide: maxItems - 1,
-    });
+    const $rightSlider = $('.slideshow-right .slider');
+    if (!$rightSlider.hasClass('slick-initialized')) {
+      $rightSlider.slick({
+        swipe: false,
+        vertical: true,
+        arrows: false,
+        infinite: true,
+        speed: 950,
+        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+        initialSlide: maxItems - 1,
+      });
+    }
 
-    // Text slider initialization
-    $('.slideshow-text').slick({
-      swipe: false,
-      vertical: true,
-      arrows: false,
-      infinite: true,
-      speed: 900,
-      cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-    });
+    const $textSlider = $('.slideshow-text');
+    if (!$textSlider.hasClass('slick-initialized')) {
+      $textSlider.slick({
+        swipe: false,
+        vertical: true,
+        arrows: false,
+        infinite: true,
+        speed: 900,
+        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+      });
+    }
+
+    setIsSlickInitialized(true);
+
+    // Recalculate layout after initialization
+    setTimeout(() => {
+      $slider.slick('setPosition');
+      $rightSlider.slick('setPosition');
+      $textSlider.slick('setPosition');
+    }, 100);
   };
 
   useEffect(() => {
-    initializeSlider();
+    const images = document.querySelectorAll('.item img');
+    let loadedImages = 0;
+
+    const handleImageLoad = () => {
+      loadedImages += 1;
+      if (loadedImages === images.length) {
+        initializeSlider();
+      }
+    };
+
+    if (images.length > 0) {
+      images.forEach((img) => {
+        if (img.complete) {
+          handleImageLoad();
+        } else {
+          img.addEventListener('load', handleImageLoad);
+          img.addEventListener('error', handleImageLoad); // Handle broken images
+        }
+      });
+    } else {
+      initializeSlider(); // Fallback if no images
+    }
 
     const handleResize = () => {
-      $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
-      initializeSlider();
+      if (isSlickInitialized) {
+        $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
+        initializeSlider();
+      }
     };
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
-      $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
+      if (isSlickInitialized) {
+        try {
+          $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
+        } catch (e) {
+          console.warn('Slick cleanup failed:', e);
+        }
+      }
+      images.forEach((img) => {
+        img.removeEventListener('load', handleImageLoad);
+        img.removeEventListener('error', handleImageLoad);
+      });
     };
-  }, []);
+  }, [isSlickInitialized]);
 
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   return (
     <div className="split-slideshow">
