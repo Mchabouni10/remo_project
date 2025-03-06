@@ -1,17 +1,16 @@
-
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap");
 
 #nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 1%;
+  padding: 1% 10px; /* Added horizontal padding for consistency */
   margin: 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   position: sticky;
   top: 0;
-  z-index: 1000; /* Higher z-index than sticky service menu */
+  z-index: 1000;
 }
 
 #nav .logo-container {
@@ -74,13 +73,12 @@
   width: auto;
 }
 
-/* Hamburger Icon (Hidden by Default) */
 .hamburger-icon {
   display: none;
   font-size: 25px;
   cursor: pointer;
   color: black;
-  z-index: 1002; /* Higher than everything else */
+  z-index: 1002; /* Keep high for interaction */
 }
 
 /* Style for Active Page */
@@ -98,7 +96,6 @@
   transition: all 0.3s ease-in-out;
 }
 
-/* Hover effect - Slight scale */
 #nav ul li .contact-button:hover {
   transform: scale(1.05);
   background-color: #333;
@@ -107,36 +104,38 @@
 /* Mobile Menu Styles */
 @media (max-width: 768px) {
   .hamburger-icon {
-    display: block; /* Show hamburger icon on mobile */
+    display: block;
   }
 
   .links-container {
     position: absolute;
-    top: 100%;
+    top: 100%; /* Align directly below navbar */
     left: 0;
     width: 100%;
     background-color: white;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Changed for better alignment */
     overflow: hidden;
     max-height: 0;
     opacity: 0;
     transform: translateY(-10px);
     transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    z-index: 1001; /* Higher than sticky service menu */
+    z-index: 1001; /* Below hamburger icon but above content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
   }
 
   .links-container.active {
-    max-height: 300px; /* Ensure dropdown opens */
+    max-height: 300px; /* Sufficient height for all items */
     opacity: 1;
     transform: translateY(0);
+    padding-top: 15px; /* Added padding to push content down */
   }
 
   #nav ul {
     flex-direction: column;
     width: 100%;
-    padding: 0;
+    padding: 10px 0; /* Adjusted padding */
   }
 
   #nav ul li {
@@ -151,9 +150,9 @@
     text-align: center;
   }
 
-  /* Reduce Navbar Height */
   #nav {
-    padding: 10px 0;
+    padding: 10px; /* Consistent padding */
+    height: 60px; /* Fixed height to calculate top offset */
   }
 
   .CompanyLogo {
@@ -162,6 +161,7 @@
 
   .hamburger-icon {
     font-size: 18px;
+    padding: 5px; /* Small padding for click area */
   }
 }
 
