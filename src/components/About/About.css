@@ -1,27 +1,22 @@
 /* Import a Futuristic Font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&display=swap");
 
-/* Apply Orbitron font to headings and Exo 2 to paragraphs */
 body {
-  font-family: "Exo 2", sans-serif; /* Default font for paragraphs */
+  font-family: "Exo 2", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .about-main-heading {
-  font-family: "Orbitron", sans-serif; /* Futuristic font for headings */
-}
-
-/* Main heading style */
-.about-main-heading {
+  font-family: "Orbitron", sans-serif;
   text-align: center;
   font-size: 36px;
-  color: #222; /* Dark text */
-  margin-top: 20px;
-  margin-bottom: 40px;
+  color: #222;
+  margin: 20px 0 30px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-/* Container for each about section */
 .about-section {
   display: flex;
   align-items: stretch;
@@ -29,74 +24,66 @@ body {
   margin: 2% auto;
   width: 90%;
   max-width: 1200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Futuristic shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
-  background-color: #f9f9f9; /* Light background */
+  background-color: #f9f9f9;
   border-radius: 12px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Content container */
 .about-content {
   display: flex;
   align-items: stretch;
   width: 100%;
 }
 
-/* Text container */
 .about-text {
   width: 50%;
-  padding-right: 20px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/* Image container */
 .about-image {
   width: 50%;
-  padding-left: 20px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
 }
 
-/* Ensure images fill their container and maintain aspect ratio */
 .about-image img {
   width: 100%;
   height: auto;
   max-height: 300px;
   object-fit: cover;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Futuristic shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .about-image img:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Paragraph styles */
 .about-text p {
   font-size: 18px;
   line-height: 1.6;
-  color: #555; /* Darker gray text */
-  margin: 10px 40px;
-  font-family: "Exo 2", sans-serif; /* Revert to previous font */
+  color: #555;
+  margin: 10px 0;
 }
 
-/* Strong text styling */
 .about-text strong {
-  color: #222; /* Dark text */
+  color: #222;
   font-weight: 600;
 }
 
-/* Reverse content layout for alternating sections */
 .about-content.reverse {
   flex-direction: row-reverse;
 }
@@ -108,20 +95,24 @@ body {
   margin-top: 1.5%;
 }
 
+.logo3 img {
+  width: 100%;
+  max-width: 200px; /* Constrain logo size */
+  height: auto;
+  object-fit: contain;
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .about-main-heading {
     font-size: 32px;
   }
-
   .about-section {
     width: 95%;
   }
-
   .about-text p {
     font-size: 16px;
   }
-
   .about-image img {
     max-height: 250px;
   }
@@ -130,54 +121,66 @@ body {
 @media (max-width: 768px) {
   .about-main-heading {
     font-size: 28px;
-    margin-bottom: 30px;
+    margin: 15px 0 20px;
   }
-
   .about-section {
     flex-direction: column;
     text-align: center;
     padding: 15px;
+    width: 95%;
   }
-
   .about-content {
     flex-direction: column;
   }
-
   .about-text,
   .about-image {
     width: 100%;
     padding: 0;
   }
-
-  .about-image {
-    margin-top: 20px;
+  .about-text {
+    margin-bottom: 15px;
   }
-
+  .about-image {
+    margin-top: 15px;
+  }
   .about-image img {
     max-height: 200px;
   }
-
   .about-text p {
-    margin: 10px 0;
+    font-size: 16px;
+    margin: 0;
+  }
+  /* Alternate image/text order */
+  .about-section:nth-child(odd) .about-content {
+    flex-direction: column; /* Image on top, text below */
+  }
+  .about-section:nth-child(even) .about-content {
+    flex-direction: column-reverse; /* Text on top, image below */
+  }
+  .about-content.reverse {
+    flex-direction: column-reverse; /* Ensure consistency */
+  }
+  .logo3 {
+    margin: 15px auto;
   }
 }
 
 @media (max-width: 480px) {
   .about-main-heading {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin: 10px 0 15px;
   }
-
   .about-section {
-    width: 100%;
     padding: 10px;
+    width: 100%;
   }
-
   .about-text p {
     font-size: 14px;
   }
-
   .about-image img {
     max-height: 150px;
+  }
+  .logo3 img {
+    max-width: 150px;
   }
 }
