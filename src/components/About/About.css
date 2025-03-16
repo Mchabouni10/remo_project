@@ -1,18 +1,17 @@
-/* Import a Futuristic Font from Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&display=swap");
 
 body {
-  font-family: "Exo 2", sans-serif;
+  font-family: var(--font-primary);
   margin: 0;
   padding: 0;
 }
 
 .about-main-heading {
-  font-family: "Orbitron", sans-serif;
+  font-family: var(--font-futuristic);
   text-align: center;
-  font-size: 36px;
-  color: #222;
-  margin: 20px 0 30px;
+  font-size: clamp(1.5rem, 5vw, 2.25rem);
+  color: var(--color-black);
+  margin: var(--spacing-xl) auto var(--spacing-lg);
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -21,19 +20,20 @@ body {
   display: flex;
   align-items: stretch;
   justify-content: space-between;
-  margin: 2% auto;
+  margin: var(--spacing-xl) auto;
   width: 90%;
   max-width: 1200px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--shadow-strong);
+  padding: var(--spacing-lg);
+  background-color: var(--color-bg-light);
+  border-radius: var(--radius-md);
+  transition: var(--transition-default);
+  border: 1px solid rgba(51, 51, 51, 0.2);
 }
 
 .about-section:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .about-content {
@@ -44,15 +44,16 @@ body {
 
 .about-text {
   width: 50%;
-  padding: 0 20px;
+  padding: var(--spacing-lg);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.about-image {
+.about-image,
+.logo3 {
   width: 50%;
-  padding: 0 20px;
+  padding: var(--spacing-lg);
   display: flex;
   align-items: center;
 }
@@ -60,27 +61,28 @@ body {
 .about-image img {
   width: 100%;
   height: auto;
-  max-height: 300px;
+  max-height: 18.75rem; /* 300px */
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: var(--radius-md);
+  transition: transform 0.3s ease;
 }
 
-.about-image img:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+.logo3 img {
+  width: 100%;
+  max-width: 12.5rem; /* 200px */
+  height: auto;
+  object-fit: contain;
 }
 
 .about-text p {
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 1.6;
-  color: #555;
-  margin: 10px 0;
+  color: var(--color-dark-gray);
+  margin: var(--spacing-sm) 0;
 }
 
 .about-text strong {
-  color: #222;
+  color: var(--color-black);
   font-weight: 600;
 }
 
@@ -88,99 +90,92 @@ body {
   flex-direction: row-reverse;
 }
 
-.logo3 {
-  width: auto;
-  height: auto;
-  margin-left: 20%;
-  margin-top: 1.5%;
-}
-
-.logo3 img {
-  width: 100%;
-  max-width: 200px; /* Constrain logo size */
-  height: auto;
-  object-fit: contain;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .about-main-heading {
-    font-size: 32px;
-  }
-  .about-section {
-    width: 95%;
-  }
-  .about-text p {
-    font-size: 16px;
-  }
-  .about-image img {
-    max-height: 250px;
-  }
-}
-
 @media (max-width: 768px) {
   .about-main-heading {
-    font-size: 28px;
-    margin: 15px 0 20px;
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   }
+
   .about-section {
     flex-direction: column;
-    text-align: center;
-    padding: 15px;
     width: 95%;
+    padding: var(--spacing-md);
+    background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+    border: 2px solid var(--color-dark-gray);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    margin: var(--spacing-lg) auto;
+    animation: fadeIn 0.5s ease-in-out;
   }
+
   .about-content {
     flex-direction: column;
   }
+
   .about-text,
-  .about-image {
-    width: 100%;
-    padding: 0;
-  }
-  .about-text {
-    margin-bottom: 15px;
-  }
-  .about-image {
-    margin-top: 15px;
-  }
-  .about-image img {
-    max-height: 200px;
-  }
-  .about-text p {
-    font-size: 16px;
-    margin: 0;
-  }
-  /* Alternate image/text order */
-  .about-section:nth-child(odd) .about-content {
-    flex-direction: column; /* Image on top, text below */
-  }
-  .about-section:nth-child(even) .about-content {
-    flex-direction: column-reverse; /* Text on top, image below */
-  }
-  .about-content.reverse {
-    flex-direction: column-reverse; /* Ensure consistency */
-  }
+  .about-image,
   .logo3 {
-    margin: 15px auto;
+    width: 100%;
+    padding: var(--spacing-sm);
+  }
+
+  .about-text {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .about-image,
+  .logo3 {
+    margin-top: var(--spacing-md);
+  }
+
+  .about-image img {
+    max-height: 12.5rem; /* 200px */
+    border: 1px solid var(--color-medium-gray);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .about-image img:active {
+    transform: scale(1.05);
+  }
+
+  .logo3 img {
+    max-width: 9.375rem; /* 150px */
+  }
+
+  .about-text p {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+
+  .about-section:nth-child(odd) .about-content {
+    flex-direction: column;
+  }
+
+  .about-section:nth-child(even) .about-content {
+    flex-direction: column-reverse;
+  }
+
+  .about-content.reverse {
+    flex-direction: column-reverse;
   }
 }
 
 @media (max-width: 480px) {
-  .about-main-heading {
-    font-size: 24px;
-    margin: 10px 0 15px;
-  }
   .about-section {
-    padding: 10px;
     width: 100%;
+    padding: var(--spacing-sm);
+    border-width: 1px;
   }
-  .about-text p {
-    font-size: 14px;
-  }
+
   .about-image img {
-    max-height: 150px;
+    max-height: 9.375rem; /* 150px */
   }
-  .logo3 img {
-    max-width: 150px;
+
+  .about-text p {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
   }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }

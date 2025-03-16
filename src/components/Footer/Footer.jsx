@@ -10,18 +10,35 @@ function Footer() {
         <p className="footer-text">Visit us:</p>
 
         <div className="social-icons">
-          <a href="#" className="icon facebook" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://facebook.com" // Replace with your actual link
+            className="icon-button facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faFacebookF} />
           </a>
-          <a href="#" className="icon instagram" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://instagram.com" // Replace with your actual link
+            className="icon-button instagram"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faInstagram} />
           </a>
-          <a href="#" className="icon twitter" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://twitter.com" // Replace with your actual link
+            className="icon-button twitter"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FontAwesomeIcon icon={faXTwitter} />
           </a>
         </div>
-            {/* Mobile-Only Call Us */}
-            <p className="call-us">Call Us: (224) 817-3264</p>
+        {/* Mobile-Only Call Us with tel: link */}
+        <a href="tel:+12248173264" className="call-us">
+          Call Us: (224) 817-3264
+        </a>
       </div>
     </div>
   );

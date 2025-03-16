@@ -1,13 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap");
-
 #nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
-  padding: 1% 10px; /* Added horizontal padding for consistency */
-  margin: 0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  background-color: var(--color-white);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  box-shadow: var(--shadow-light);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -32,18 +29,18 @@
 }
 
 #nav ul li {
-  margin-left: 25px;
+  margin-left: var(--spacing-lg);
 }
 
 #nav ul li a {
-  text-align: center;
-  font-size: 20px;
-  color: black;
+  font-size: 1.25rem;
+  color: var(--color-black);
   text-decoration: none;
-  font-family: "Orbitron", sans-serif;
+  font-family: var(--font-futuristic);
   font-weight: 500;
-  transition: all 0.3s ease-in-out;
+  transition: var(--transition-default);
   position: relative;
+  padding: var(--spacing-xs) var(--spacing-sm);
 }
 
 #nav ul li a::after {
@@ -51,7 +48,7 @@
   position: absolute;
   width: 100%;
   height: 2px;
-  background: black;
+  background: var(--color-black);
   bottom: -5px;
   left: 0;
   transform: scaleX(0);
@@ -65,43 +62,60 @@
 }
 
 #nav ul li a:hover {
-  color: #555;
+  color: var(--color-medium-gray);
 }
 
 .CompanyLogo {
-  height: 70px;
+  height: clamp(50px, 10vw, 70px);
   width: auto;
 }
 
 .hamburger-icon {
   display: none;
-  font-size: 25px;
+  font-size: 1.5rem;
   cursor: pointer;
-  color: black;
-  z-index: 1002; /* Keep high for interaction */
+  color: var(--color-black);
+  z-index: 1002;
 }
 
-/* Style for Active Page */
-.links-container ul li a.active {
+/* Highlight active link (non-Contact) */
+.links-container ul li a.active:not(.contact-button) {
   font-weight: bold;
-  color: black;
+  color: var(--color-black);
 }
 
-/* Contact Button Style */
-#nav ul li .contact-button {
-  background-color: black;
-  color: white !important;
-  padding: 8px 20px;
-  border-radius: 25px;
-  transition: all 0.3s ease-in-out;
+/* Contact Button Default Styling (Desktop) */
+.links-container ul li a.contact-button {
+  background: linear-gradient(90deg, var(--color-dark-gray), var(--color-black));
+  color: var(--color-white) !important;
+  padding: var(--spacing-md) var(--spacing-xl);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-button);
+  transition: var(--transition-default);
 }
 
-#nav ul li .contact-button:hover {
+/* Contact Button Hover (Desktop) */
+.links-container ul li a.contact-button:hover {
   transform: scale(1.05);
-  background-color: #333;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Mobile Menu Styles */
+/* Contact Button Active (Desktop) */
+.links-container ul li a.contact-button.active {
+  background: linear-gradient(90deg, var(--color-black), var(--color-dark-gray));
+  color: var(--color-white) !important;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Disable underline for Contact button */
+.links-container ul li a.contact-button::after,
+.links-container ul li a.contact-button:hover::after,
+.links-container ul li a.contact-button.active::after {
+  display: none;
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
   .hamburger-icon {
     display: block;
@@ -109,63 +123,73 @@
 
   .links-container {
     position: absolute;
-    top: 100%; /* Align directly below navbar */
+    top: 100%;
     left: 0;
     width: 100%;
-    background-color: white;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Changed for better alignment */
-    overflow: hidden;
+    background-color: var(--color-white);
     max-height: 0;
     opacity: 0;
     transform: translateY(-10px);
     transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    z-index: 1001; /* Below hamburger icon but above content */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    z-index: 1001;
+    box-shadow: var(--shadow-light);
+    overflow-y: auto;
   }
 
   .links-container.active {
-    max-height: 300px; /* Sufficient height for all items */
+    max-height: 9rem; /* Reduced from 12.5rem (200px) to 144px */
     opacity: 1;
     transform: translateY(0);
-    padding-top: 15px; /* Added padding to push content down */
+    padding: var(--spacing-xs) 0; /* Reduced from sm (8px) to xs (4px) */
   }
 
   #nav ul {
     flex-direction: column;
     width: 100%;
-    padding: 10px 0; /* Adjusted padding */
+    padding: 0;
   }
 
   #nav ul li {
-    margin: 12px 0;
+    margin: var(--spacing-xs) 0; /* Reduced from sm (8px) to xs (4px) */
   }
 
   #nav ul li a {
-    font-size: 18px;
-    padding: 10px 0;
+    font-size: 1.125rem;
+    padding: var(--spacing-xs) 0; /* Consistent padding */
     display: block;
     width: 100%;
     text-align: center;
   }
 
+  /* Contact as Regular Link on Mobile */
+  .links-container ul li a.contact-button {
+    background: none;
+    color: var(--color-black) !important;
+    padding: var(--spacing-xs) 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .links-container ul li a.contact-button:hover {
+    color: var(--color-medium-gray) !important;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .links-container ul li a.contact-button.active {
+    font-weight: bold;
+    color: var(--color-black) !important;
+    background: none;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .links-container ul li a.contact-button::after {
+    display: block;
+  }
+
   #nav {
-    padding: 10px; /* Consistent padding */
-    height: 60px; /* Fixed height to calculate top offset */
-  }
-
-  .CompanyLogo {
-    height: 50px;
-  }
-
-  .hamburger-icon {
-    font-size: 18px;
-    padding: 5px; /* Small padding for click area */
+    padding: var(--spacing-sm);
+    height: 3.75rem; /* 60px */
   }
 }
-
-
-  
-
-  

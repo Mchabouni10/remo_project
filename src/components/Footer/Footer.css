@@ -1,143 +1,134 @@
-/* Import a Futuristic Font from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&display=swap");
-
-/* Footer Base Styles */
+/* Footer container */
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  background-color: white; /* Original background color */
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
-  padding: 0 0; /* Reduced padding for a slimmer look */
+  background-color: var(--color-white);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
+  padding: var(--spacing-sm) 0;
   margin-top: auto;
 }
 
-/* Flexbox for center alignment */
+/* Footer content */
 .footer-content {
   display: flex;
   align-items: center;
-  gap: 30px; /* Increased gap for better spacing */
+  gap: var(--spacing-lg);
   flex-wrap: wrap;
   justify-content: center;
 }
 
-/* "Visit us" text */
+/* Visit us text */
 .footer-text {
-  font-family: "Orbitron", sans-serif; /* Futuristic font */
-  font-size: 20px;
+  font-family: var(--font-futuristic);
+  font-size: 1.25rem;
   font-weight: 500;
-  color: black; /* Original text color */
-  text-transform: capitalize; /* Capitalize only the first letter of each word */
-  letter-spacing: 1px; /* Spacing for better readability */
-  margin-right: 20px; /* Add space between text and logos */
-}
-
-/* Social icons */
-.social-icons {
-  display: flex;
-  gap: 25px;
-  font-size: 18px;
-}
-
-.social-icons a {
-  color: white; /* Initial text color */
-  text-decoration: none;
-  position: relative;
-  padding: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 12px;
-  background: linear-gradient(90deg, #333, black);
-  transition: all 0.6s ease-in-out; /* Smooth transition for all properties */
-  transform-style: preserve-3d; /* Enable 3D transformations */
-  perspective: 1000px; /* Add perspective for 3D effect */
-  overflow: hidden; /* Hide overflow for pseudo-element */
-}
-
-/* Pseudo-element for flipped background */
-.social-icons a::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(145deg, #ffffff, #333); /* Flipped gradient */
-  border-radius: 12px;
-  transform: rotateY(180deg); /* Start flipped */
-  backface-visibility: hidden; /* Hide the back side */
-  transition: transform 0.6s ease-in-out; /* Smooth transition for flipping */
-}
-
-/* Hover effect */
-.social-icons a:hover {
-  color: black; /* Flipped text color */
-  background: linear-gradient(90deg, white, #333);
-}
-
-
-
-
-/* Mobile-Only "Call Us" Section */
-.call-us {
-  display: none;
-  font-size: 18px;
-  font-weight: bold;
-  color: black;
-  text-align: center;
-  font-family: "Orbitron", sans-serif; /* Futuristic font */
-  text-transform: capitalize; /* Capitalize only the first letter of each word */
+  color: var(--color-black);
+  text-transform: capitalize;
   letter-spacing: 1px;
 }
 
-/* === Responsive Adjustments === */
+/* Social icons container */
+.social-icons {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+/* Social icon buttons */
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem; /* Fixed size for consistency */
+  height: 2.5rem;
+  background: linear-gradient(90deg, var(--color-dark-gray), var(--color-black)); /* Same as Call Us */
+  color: var(--color-white); /* White icons */
+  border-radius: var(--radius-md);
+  font-size: 1.25rem; /* Slightly larger icons */
+  text-decoration: none; /* No underline */
+  transition: var(--transition-default);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Glow effect */
+}
+
+/* Hover effect for social buttons */
+.icon-button:hover {
+  transform: scale(1.1); /* Slightly larger on hover */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Call us link (hidden by default) */
+.call-us {
+  display: none;
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: var(--color-white);
+  text-align: center;
+  font-family: var(--font-futuristic);
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  transition: var(--transition-default);
+}
+
+/* Hover effect for call-us (desktop, if visible) */
+.call-us:hover {
+  color: var(--color-dark-gray);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .footer {
-    padding: 15px 0; /* Reduced padding for mobile */
+  .footer-content {
+    flex-direction: column;
+    gap: var(--spacing-md);
   }
 
-  .footer-content {
-    gap: 20px;
-    flex-direction: column; /* Stack items vertically on mobile */
+  .call-us {
+    display: block;
+    background: linear-gradient(90deg, var(--color-dark-gray), var(--color-black));
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .call-us:hover,
+  .call-us:active {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   }
 
   .footer-text {
-    font-size: 18px;
-    margin-right: 0; /* Remove margin on mobile */
+    font-size: 1rem;
   }
 
-  .social-icons {
-    gap: 20px;
-    font-size: 20px;
-  }
-
-  /* Show "Call Us" on Mobile */
-  .call-us {
-    display: block;
+  .icon-button {
+    width: 2rem; /* Slightly smaller for mobile */
+    height: 2rem;
+    font-size: 1rem;
   }
 }
 
 @media (max-width: 480px) {
-  .footer {
-    padding: 10px 0;
-  }
-
-  .footer-content {
-    gap: 15px;
+  .call-us {
+    font-size: 0.875rem;
+    padding: var(--spacing-xs) var(--spacing-md);
   }
 
   .footer-text {
-    font-size: 16px;
+    font-size: 0.875rem;
   }
 
   .social-icons {
-    gap: 15px;
-    font-size: 18px;
+    gap: var(--spacing-sm);
   }
 
-  .call-us {
-    font-size: 16px;
+  .icon-button {
+    width: 1.75rem; /* Even smaller for compact screens */
+    height: 1.75rem;
+    font-size: 0.875rem;
   }
 }
   

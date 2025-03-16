@@ -1,4 +1,4 @@
-/* Import a Futuristic Font from Google Fonts */
+/* Import Futuristic Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Exo+2:wght@400;500;600;700&display=swap");
 
 /* Contact form container */
@@ -6,50 +6,58 @@
   width: 100%;
   max-width: 1200px;
   min-height: 75vh;
-  margin: 2% auto;
-  padding: 40px 20px;
-  background-color: #f9f9f9; /* Light background */
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-lg);
+  background: linear-gradient(135deg, var(--color-bg-light), #e0e0e0); /* Consistent gradient */
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-strong);
+  border: 1px solid rgba(51, 51, 51, 0.2); /* Futuristic border */
   box-sizing: border-box;
+  transition: var(--transition-default);
 }
 
 /* Heading style */
 .contact-heading {
   text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #222; /* Dark text */
-  font-family: "Orbitron", sans-serif; /* Futuristic font */
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-dark-gray);
+  font-family: var(--font-futuristic);
   text-transform: uppercase;
   letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Subtle glow */
 }
 
+/* Description style */
 .contact-description {
   text-align: center;
-  font-size: 1.1rem;
-  color: #555; /* Darker gray text */
-  margin-bottom: 30px;
-  font-family: "Exo 2", sans-serif; /* Futuristic font */
+  font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+  color: var(--color-medium-gray);
+  margin-bottom: var(--spacing-xl);
+  font-family: var(--font-primary);
 }
 
-/* Container for form and contact information */
+/* Container for form and contact info */
 .contact-content {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
-  gap: 20px;
+  gap: var(--spacing-lg);
   box-sizing: border-box;
 }
 
 /* Form container */
 .contact-form {
   width: 48%;
-  padding: 25px;
-  background-color: #fff; /* White background */
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: var(--spacing-lg);
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-light);
   box-sizing: border-box;
+  transition: var(--transition-default);
+}
+
+.contact-form:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 form {
@@ -58,106 +66,115 @@ form {
 }
 
 label {
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-sm);
   font-weight: 500;
-  color: #333; /* Dark text */
-  font-family: "Exo 2", sans-serif; /* Futuristic font */
+  color: var(--color-dark-gray);
+  font-family: var(--font-primary);
 }
 
 /* Input fields */
 input,
 textarea {
   width: 100%;
-  padding: 12px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc; /* Light border */
-  border-radius: 6px;
+  padding: var(--spacing-sm);
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--color-medium-gray);
+  border-radius: var(--radius-sm);
   font-size: 1rem;
-  background-color: #fff; /* White background */
-  color: #333; /* Dark text */
-  font-family: "Exo 2", sans-serif; /* Futuristic font */
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  font-family: var(--font-primary);
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input:focus,
 textarea:focus {
-  border-color: #333; /* Futuristic cyan color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Glow effect on focus */
+  border-color: var(--color-dark-gray);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  outline: none;
 }
 
 /* Button styling */
 button {
-  background: linear-gradient(90deg, #333, black); /* Futuristic gradient */
-  color: #ffffff; /* Black text */
+  background: linear-gradient(90deg, var(--color-dark-gray), var(--color-black));
+  color: var(--color-white);
   border: none;
-  padding: 12px;
+  padding: var(--spacing-sm) var(--spacing-lg);
   cursor: pointer;
-  border-radius: 6px;
-  font-size: 1rem;
-  font-family: "Orbitron", sans-serif; /* Futuristic font */
+  border-radius: var(--radius-md);
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  font-family: var(--font-futuristic);
   text-transform: uppercase;
   letter-spacing: 1px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition-default);
+  box-shadow: var(--shadow-button);
 }
 
 button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7); /* Glow effect on hover */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
 /* Error message styling */
 .error {
-  color: #ff4444; /* Red error text */
-  font-size: 0.9rem;
-  margin-top: 5px;
+  color: #ff4444;
+  font-size: clamp(0.75rem, 2vw, 0.9rem);
+  margin-top: var(--spacing-xs);
+  font-family: var(--font-primary);
 }
 
 /* Contact information container */
 .contact-info {
   width: 48%;
-  padding: 25px;
-  background-color: #fff; /* White background */
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: var(--spacing-lg);
+  background-color: var(--color-white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-light);
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  transition: var(--transition-default);
+}
+
+.contact-info:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .contact-info-heading {
-  margin-bottom: 15px;
-  font-size: 1.5rem;
-  color: #222; /* Dark text */
-  font-family: "Orbitron", sans-serif; /* Futuristic font */
+  margin-bottom: var(--spacing-md);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  color: var(--color-dark-gray);
+  font-family: var(--font-futuristic);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .contact-info-text {
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  color: #555; /* Darker gray text */
+  font-size: clamp(0.875rem, 2.5vw, 1.1rem);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-medium-gray);
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-family: "Exo 2", sans-serif; /* Futuristic font */
+  gap: var(--spacing-sm);
+  font-family: var(--font-primary);
 }
 
 /* Popup message styling */
 .popup-message {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 15px 20px;
-  border-radius: 6px;
-  font-size: 1rem;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-sm);
+  font-size: clamp(0.875rem, 2vw, 1rem);
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--spacing-sm);
   z-index: 1000;
   animation: slideIn 0.5s ease-out;
-  font-family: "Exo 2", sans-serif; /* Futuristic font */
+  font-family: var(--font-primary);
+  box-shadow: var(--shadow-light);
 }
 
 .popup-message.success {
@@ -178,112 +195,138 @@ button:hover {
 
 /* Animation for popup */
 @keyframes slideIn {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
 }
 
 .disclaimer-message {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #555; /* Darker gray text */
+  margin-top: var(--spacing-lg);
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  color: var(--color-medium-gray);
   text-align: center;
-  padding: 10px;
-  border-top: 1px solid #ddd; /* Light border */
-  font-family: "Exo 2", sans-serif; /* Futuristic font */
+  padding: var(--spacing-sm);
+  border-top: 1px solid var(--color-light-gray);
+  font-family: var(--font-primary);
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 1024px) {
   .contact-content {
     flex-direction: column;
-    gap: 30px;
+    gap: var(--spacing-xl);
   }
 
   .contact-form,
   .contact-info {
     width: 100%;
   }
-
-  .contact-heading {
-    font-size: 2rem;
-  }
-
-  .contact-description {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 768px) {
   .contact-form-container {
-    padding: 20px;
+    padding: var(--spacing-md);
     min-height: auto;
+    width: 95%;
+    background: linear-gradient(135deg, #f9f9f9, #e0e0e0); /* Consistent gradient */
+    border: 2px solid var(--color-dark-gray);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
   }
 
   .contact-heading {
-    font-size: 1.8rem;
+    font-size: clamp(1.25rem, 4vw, 2rem);
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   }
 
   .contact-description {
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
 
-  .contact-info-heading {
-    font-size: 1.3rem;
-  }
-
-  .contact-info-text {
-    font-size: 1rem;
+  .contact-form,
+  .contact-info {
+    padding: var(--spacing-md);
+    border: 1px solid var(--color-medium-gray);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    border-radius: var(--radius-lg);
   }
 
   input,
   textarea {
-    padding: 10px;
-    font-size: 0.9rem;
+    padding: var(--spacing-md);
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    border-radius: var(--radius-md);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
   }
 
   button {
-    padding: 10px;
-    font-size: 0.9rem;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+    border: 1px solid var(--color-white);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  }
+
+  .contact-info-heading {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .contact-info-text {
+    font-size: clamp(0.75rem, 2vw, 1rem);
   }
 }
 
 @media (max-width: 480px) {
   .contact-form-container {
-    padding: 15px;
+    padding: var(--spacing-sm);
+    width: 100%;
+    border-width: 1px;
   }
 
   .contact-heading {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
   }
 
   .contact-description {
-    font-size: 0.8rem;
+    font-size: clamp(0.625rem, 1.5vw, 0.875rem);
   }
 
-  .contact-info-heading {
-    font-size: 1.1rem;
-  }
-
-  .contact-info-text {
-    font-size: 0.9rem;
+  .contact-form,
+  .contact-info {
+    padding: var(--spacing-sm);
   }
 
   input,
   textarea {
-    padding: 8px;
-    font-size: 0.8rem;
+    padding: var(--spacing-sm);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
   }
 
   button {
-    padding: 8px;
-    font-size: 0.8rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+  }
+
+  .contact-info-heading {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+
+  .contact-info-text {
+    font-size: clamp(0.625rem, 1.5vw, 0.875rem);
+  }
+
+  .disclaimer-message {
+    font-size: clamp(0.625rem, 1.5vw, 0.75rem);
+  }
+
+  .popup-message {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
   }
 }
 
-  
-  
-  
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
