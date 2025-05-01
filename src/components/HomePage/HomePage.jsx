@@ -8,121 +8,71 @@ import './HomePage.css';
 
 const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
-  const [isSlickInitialized, setIsSlickInitialized] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  const initializeSlider = () => {
-    const $slider = $('.slideshow .slider');
-    const maxItems = $('.item', $slider).length;
-
-    if (!$slider.hasClass('slick-initialized')) {
-      $slider.addClass('slideshow-left').slick({
-        vertical: true,
-        verticalSwiping: true,
-        arrows: false,
-        infinite: true,
-        dots: true,
-        speed: 1000,
-        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-      }).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
-        if (currentSlide > nextSlide && nextSlide === 0 && currentSlide === maxItems - 1) {
-          $('.slideshow-right .slider').slick('slickGoTo', -1);
-          $('.slideshow-text').slick('slickGoTo', maxItems);
-        } else if (currentSlide < nextSlide && currentSlide === 0 && nextSlide === maxItems - 1) {
-          $('.slideshow-right .slider').slick('slickGoTo', maxItems);
-          $('.slideshow-text').slick('slickGoTo', -1);
-        } else {
-          $('.slideshow-right .slider').slick('slickGoTo', maxItems - 1 - nextSlide);
-          $('.slideshow-text').slick('slickGoTo', nextSlide);
-        }
-      });
-    }
-
-    const $rightSlider = $('.slideshow-right .slider');
-    if (!$rightSlider.hasClass('slick-initialized')) {
-      $rightSlider.slick({
-        swipe: false,
-        vertical: true,
-        arrows: false,
-        infinite: true,
-        speed: 950,
-        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-        initialSlide: maxItems - 1,
-      });
-    }
-
-    const $textSlider = $('.slideshow-text');
-    if (!$textSlider.hasClass('slick-initialized')) {
-      $textSlider.slick({
-        swipe: false,
-        vertical: true,
-        arrows: false,
-        infinite: true,
-        speed: 900,
-        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
-      });
-    }
-
-    setIsSlickInitialized(true);
-
-    // Recalculate layout after initialization
-    setTimeout(() => {
-      $slider.slick('setPosition');
-      $rightSlider.slick('setPosition');
-      $textSlider.slick('setPosition');
-    }, 100);
-  };
+  const handleOpenModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
 
   useEffect(() => {
-    const images = document.querySelectorAll('.item img');
-    let loadedImages = 0;
-
-    const handleImageLoad = () => {
-      loadedImages += 1;
-      if (loadedImages === images.length) {
-        initializeSlider();
+    const checkImagesLoaded = () => {
+      const images = document.querySelectorAll('.item img');
+      if (images.length === 0) {
+        setImagesLoaded(true);
+        return;
       }
-    };
 
-    if (images.length > 0) {
-      images.forEach((img) => {
+      let loadedCount = 0;
+      const totalImages = images.length;
+
+      const handleImageLoad = () => {
+        loadedCount++;
+        if (loadedCount === totalImages) setImagesLoaded(true);
+      };
+
+      images.forEach(img => {
         if (img.complete) {
           handleImageLoad();
         } else {
           img.addEventListener('load', handleImageLoad);
-          img.addEventListener('error', handleImageLoad); // Handle broken images
+          img.addEventListener('error', handleImageLoad);
         }
       });
-    } else {
-      initializeSlider(); // Fallback if no images
-    }
 
-    const handleResize = () => {
-      if (isSlickInitialized) {
-        $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
-        initializeSlider();
-      }
+      // Fallback timeout
+      setTimeout(() => setImagesLoaded(true), 2000);
     };
 
-    window.addEventListener('resize', handleResize);
+    checkImagesLoaded();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      if (isSlickInitialized) {
-        try {
-          $('.slideshow-left, .slideshow-right .slider, .slideshow-text').slick('unslick');
-        } catch (e) {
-          console.warn('Slick cleanup failed:', e);
-        }
+      const $slider = $('.slideshow .slider');
+      if ($slider.hasClass('slick-initialized')) {
+        $slider.slick('unslick');
       }
-      images.forEach((img) => {
-        img.removeEventListener('load', handleImageLoad);
-        img.removeEventListener('error', handleImageLoad);
-      });
     };
-  }, [isSlickInitialized]);
+  }, []);
 
-  const handleOpenModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
+  useEffect(() => {
+    if (imagesLoaded) {
+      const $slider = $('.slideshow .slider');
+      $slider.slick({
+        dots: true,
+        arrows: false,
+        infinite: true,
+        speed: 400, // Faster transition
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 3000, // Faster autoplay
+        cssEase: 'cubic-bezier(0.7, 0, 0.3, 1)',
+        lazyLoad: 'ondemand', // Load images on demand
+      });
+
+      const handleResize = () => $slider.slick('setPosition');
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  }, [imagesLoaded]);
 
   return (
     <div className="split-slideshow">
@@ -141,18 +91,13 @@ const HomePage = () => {
             "/images/kitchen-home.jpg",
           ].map((src, index) => (
             <div className="item" key={index}>
-              <img src={src} alt={`Slide ${index + 1}`} />
+              <img src={src} alt={`Slide ${index + 1}`} loading="lazy" />
               <button className="estimation-button" onClick={handleOpenModal}>
                 Free Estimate
               </button>
             </div>
           ))}
         </div>
-      </div>
-      <div className="slideshow-text">
-        {[...Array(10)].map((_, index) => (
-          <div className="item" key={index}></div>
-        ))}
       </div>
       <EstimateForm show={showModal} handleClose={handleCloseModal} />
     </div>
